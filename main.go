@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "autenticacion/apiCore/routers"
+	_ "github.com/udistrital/core_crud/routers"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
