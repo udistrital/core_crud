@@ -27,6 +27,18 @@ func init() {
 				&controllers.TipoDatoAdicionalController{},
 			),
 		),
+		
+		beego.NSNamespace("/area_conocimiento",
+			beego.NSInclude(
+				&controllers.AreaConocimientoController{},
+			),
+		),
+
+		beego.NSNamespace("/nucleo_basico_conocimiento",
+			beego.NSInclude(
+				&controllers.NucleoBasicoConocimientoController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }

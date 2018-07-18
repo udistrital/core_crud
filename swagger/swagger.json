@@ -9,18 +9,359 @@
             "email": "astaxie@gmail.com"
         },
         "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "name": "Url http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
     "basePath": "/v1",
     "paths": {
+        "/area_conocimiento/": {
+            "get": {
+                "tags": [
+                    "area_conocimiento"
+                ],
+                "summary": "get AreaConocimiento",
+                "operationId": "AreaConocimientoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "models.AreaConocimiento",
+                        "schema": {
+                            "$ref": "#/definitions/AreaConocimiento"
+                        }
+                    },
+                    "403": {}
+                }
+            },
+            "post": {
+                "tags": [
+                    "area_conocimiento"
+                ],
+                "summary": "create AreaConocimiento",
+                "operationId": "AreaConocimientoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for AreaConocimiento content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AreaConocimiento"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "models.AreaConocimiento"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/area_conocimiento/{id}": {
+            "get": {
+                "tags": [
+                    "area_conocimiento"
+                ],
+                "summary": "get AreaConocimiento by id",
+                "operationId": "AreaConocimientoController.Get",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "models.AreaConocimiento",
+                        "schema": {
+                            "$ref": "#/definitions/AreaConocimiento"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "area_conocimiento"
+                ],
+                "summary": "update the AreaConocimiento",
+                "operationId": "AreaConocimientoController.Update",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for AreaConocimiento content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AreaConocimiento"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "models.AreaConocimiento",
+                        "schema": {
+                            "$ref": "#/definitions/AreaConocimiento"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "area_conocimiento"
+                ],
+                "summary": "delete the AreaConocimiento",
+                "operationId": "AreaConocimientoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/nucleo_basico_conocimiento/": {
+            "get": {
+                "tags": [
+                    "nucleo_basico_conocimiento"
+                ],
+                "summary": "get NucleoBasicoConocimiento",
+                "operationId": "NucleoBasicoConocimientoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "models.NucleoBasicoConocimiento",
+                        "schema": {
+                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                        }
+                    },
+                    "403": {}
+                }
+            },
+            "post": {
+                "tags": [
+                    "nucleo_basico_conocimiento"
+                ],
+                "summary": "create NucleoBasicoConocimiento",
+                "operationId": "NucleoBasicoConocimientoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NucleoBasicoConocimiento content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "models.NucleoBasicoConocimiento"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/nucleo_basico_conocimiento/{id}": {
+            "get": {
+                "tags": [
+                    "nucleo_basico_conocimiento"
+                ],
+                "summary": "get NucleoBasicoConocimiento by id",
+                "operationId": "NucleoBasicoConocimientoController.Get",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "models.NucleoBasicoConocimiento",
+                        "schema": {
+                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "nucleo_basico_conocimiento"
+                ],
+                "summary": "update the NucleoBasicoConocimiento",
+                "operationId": "NucleoBasicoConocimientoController.Update",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NucleoBasicoConocimiento content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "models.NucleoBasicoConocimiento",
+                        "schema": {
+                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "nucleo_basico_conocimiento"
+                ],
+                "summary": "delete the NucleoBasicoConocimiento",
+                "operationId": "NucleoBasicoConocimientoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
         "/tipo_dato_adicional/": {
             "get": {
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "description": "get TipoDatoAdicional",
+                "summary": "get TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Get All",
                 "parameters": [
                     {
@@ -62,21 +403,19 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "models.TipoDatoAdicional",
                         "schema": {
-                            "$ref": "#/definitions/models.TipoDatoAdicional"
+                            "$ref": "#/definitions/TipoDatoAdicional"
                         }
                     },
-                    "403": {
-                        "description": ""
-                    }
+                    "403": {}
                 }
             },
             "post": {
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "description": "create TipoDatoAdicional",
+                "summary": "create TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Post",
                 "parameters": [
                     {
@@ -85,13 +424,13 @@
                         "description": "body for TipoDatoAdicional content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.TipoDatoAdicional"
+                            "$ref": "#/definitions/TipoDatoAdicional"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.TipoDatoAdicional"
+                        "description": "models.TipoDatoAdicional"
                     },
                     "403": {
                         "description": "body is empty"
@@ -104,7 +443,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "description": "get TipoDatoAdicional by id",
+                "summary": "get TipoDatoAdicional by id",
                 "operationId": "TipoDatoAdicionalController.Get One",
                 "parameters": [
                     {
@@ -117,9 +456,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "models.TipoDatoAdicional",
                         "schema": {
-                            "$ref": "#/definitions/models.TipoDatoAdicional"
+                            "$ref": "#/definitions/TipoDatoAdicional"
                         }
                     },
                     "403": {
@@ -131,7 +470,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "description": "update the TipoDatoAdicional",
+                "summary": "update the TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Put",
                 "parameters": [
                     {
@@ -147,15 +486,15 @@
                         "description": "body for TipoDatoAdicional content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.TipoDatoAdicional"
+                            "$ref": "#/definitions/TipoDatoAdicional"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "models.TipoDatoAdicional",
                         "schema": {
-                            "$ref": "#/definitions/models.TipoDatoAdicional"
+                            "$ref": "#/definitions/TipoDatoAdicional"
                         }
                     },
                     "403": {
@@ -167,7 +506,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "description": "delete the TipoDatoAdicional",
+                "summary": "delete the TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Delete",
                 "parameters": [
                     {
@@ -180,7 +519,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{string} delete success!"
+                        "description": "delete success!"
                     },
                     "403": {
                         "description": "id is empty"
@@ -193,7 +532,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "description": "get UnidadTiempo",
+                "summary": "get UnidadTiempo",
                 "operationId": "UnidadTiempoController.Get All",
                 "parameters": [
                     {
@@ -235,21 +574,19 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "models.UnidadTiempo",
                         "schema": {
-                            "$ref": "#/definitions/models.UnidadTiempo"
+                            "$ref": "#/definitions/UnidadTiempo"
                         }
                     },
-                    "403": {
-                        "description": ""
-                    }
+                    "403": {}
                 }
             },
             "post": {
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "description": "create UnidadTiempo",
+                "summary": "create UnidadTiempo",
                 "operationId": "UnidadTiempoController.Post",
                 "parameters": [
                     {
@@ -258,13 +595,13 @@
                         "description": "body for UnidadTiempo content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.UnidadTiempo"
+                            "$ref": "#/definitions/UnidadTiempo"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.UnidadTiempo"
+                        "description": "models.UnidadTiempo"
                     },
                     "403": {
                         "description": "body is empty"
@@ -277,7 +614,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "description": "get UnidadTiempo by id",
+                "summary": "get UnidadTiempo by id",
                 "operationId": "UnidadTiempoController.Get One",
                 "parameters": [
                     {
@@ -290,9 +627,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "models.UnidadTiempo",
                         "schema": {
-                            "$ref": "#/definitions/models.UnidadTiempo"
+                            "$ref": "#/definitions/UnidadTiempo"
                         }
                     },
                     "403": {
@@ -304,7 +641,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "description": "update the UnidadTiempo",
+                "summary": "update the UnidadTiempo",
                 "operationId": "UnidadTiempoController.Put",
                 "parameters": [
                     {
@@ -320,15 +657,15 @@
                         "description": "body for UnidadTiempo content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.UnidadTiempo"
+                            "$ref": "#/definitions/UnidadTiempo"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "models.UnidadTiempo",
                         "schema": {
-                            "$ref": "#/definitions/models.UnidadTiempo"
+                            "$ref": "#/definitions/UnidadTiempo"
                         }
                     },
                     "403": {
@@ -340,7 +677,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "description": "delete the UnidadTiempo",
+                "summary": "delete the UnidadTiempo",
                 "operationId": "UnidadTiempoController.Delete",
                 "parameters": [
                     {
@@ -353,7 +690,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{string} delete success!"
+                        "description": "delete success!"
                     },
                     "403": {
                         "description": "id is empty"
@@ -363,7 +700,62 @@
         }
     },
     "definitions": {
-        "models.TipoDatoAdicional": {
+        "AreaConocimiento": {
+            "title": "AreaConocimiento",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "NucleoBasicoConocimiento": {
+            "title": "NucleoBasicoConocimiento",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "AreaConocimiento": {
+                    "$ref": "#/definitions/AreaConocimiento"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "TipoDatoAdicional": {
             "title": "TipoDatoAdicional",
             "type": "object",
             "properties": {
@@ -389,7 +781,7 @@
                 }
             }
         },
-        "models.UnidadTiempo": {
+        "UnidadTiempo": {
             "title": "UnidadTiempo",
             "type": "object",
             "properties": {
@@ -424,6 +816,14 @@
         {
             "name": "tipo_dato_adicional",
             "description": "TipoDatoAdicionalController operations for TipoDatoAdicional\n"
+        },
+        {
+            "name": "area_conocimiento",
+            "description": "oprations for AreaConocimiento\n"
+        },
+        {
+            "name": "nucleo_basico_conocimiento",
+            "description": "oprations for NucleoBasicoConocimiento\n"
         }
     ]
 }
