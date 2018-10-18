@@ -17,4 +17,4 @@ Go version >= 1.8.
  ## Example:
 CORE_HTTP_PORT=8095 CORE_CRUD__PGUSER=postgres CORE_CRUD__PGPASS=password CORE_CRUD__PGURLS=localhost CORE_CRUD__PGDB=local CORE_CRUD__SCHEMA=core_new bee run
  ## Model DB
-![image](https://github.com/udistrital/core_crud/blob/develop/modelo_core_crud.png).
+![image](https://github.com/udistrital/core_crud/blob/develop/modelo_core_crud.PNG).
