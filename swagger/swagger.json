@@ -9,7 +9,8 @@
             "email": "astaxie@gmail.com"
         },
         "license": {
-            "name": "Url http://www.apache.org/licenses/LICENSE-2.0.html"
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
     "basePath": "/v1",
@@ -19,7 +20,7 @@
                 "tags": [
                     "area_conocimiento"
                 ],
-                "summary": "get AreaConocimiento",
+                "description": "get AreaConocimiento",
                 "operationId": "AreaConocimientoController.Get All",
                 "parameters": [
                     {
@@ -61,19 +62,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.AreaConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AreaConocimiento"
+                            "$ref": "#/definitions/models.AreaConocimiento"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
                 "tags": [
                     "area_conocimiento"
                 ],
-                "summary": "create AreaConocimiento",
+                "description": "create AreaConocimiento",
                 "operationId": "AreaConocimientoController.Post",
                 "parameters": [
                     {
@@ -82,13 +85,13 @@
                         "description": "body for AreaConocimiento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/AreaConocimiento"
+                            "$ref": "#/definitions/models.AreaConocimiento"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "models.AreaConocimiento"
+                        "description": "{int} models.AreaConocimiento"
                     },
                     "403": {
                         "description": "body is empty"
@@ -101,7 +104,7 @@
                 "tags": [
                     "area_conocimiento"
                 ],
-                "summary": "get AreaConocimiento by id",
+                "description": "get AreaConocimiento by id",
                 "operationId": "AreaConocimientoController.Get",
                 "parameters": [
                     {
@@ -114,9 +117,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.AreaConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AreaConocimiento"
+                            "$ref": "#/definitions/models.AreaConocimiento"
                         }
                     },
                     "403": {
@@ -128,7 +131,7 @@
                 "tags": [
                     "area_conocimiento"
                 ],
-                "summary": "update the AreaConocimiento",
+                "description": "update the AreaConocimiento",
                 "operationId": "AreaConocimientoController.Update",
                 "parameters": [
                     {
@@ -144,15 +147,15 @@
                         "description": "body for AreaConocimiento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/AreaConocimiento"
+                            "$ref": "#/definitions/models.AreaConocimiento"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.AreaConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AreaConocimiento"
+                            "$ref": "#/definitions/models.AreaConocimiento"
                         }
                     },
                     "403": {
@@ -164,7 +167,7 @@
                 "tags": [
                     "area_conocimiento"
                 ],
-                "summary": "delete the AreaConocimiento",
+                "description": "delete the AreaConocimiento",
                 "operationId": "AreaConocimientoController.Delete",
                 "parameters": [
                     {
@@ -177,7 +180,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "delete success!"
+                        "description": "{string} delete success!"
                     },
                     "403": {
                         "description": "id is empty"
@@ -190,7 +193,7 @@
                 "tags": [
                     "nucleo_basico_conocimiento"
                 ],
-                "summary": "get NucleoBasicoConocimiento",
+                "description": "get NucleoBasicoConocimiento",
                 "operationId": "NucleoBasicoConocimientoController.Get All",
                 "parameters": [
                     {
@@ -232,19 +235,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.NucleoBasicoConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                            "$ref": "#/definitions/models.NucleoBasicoConocimiento"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
                 "tags": [
                     "nucleo_basico_conocimiento"
                 ],
-                "summary": "create NucleoBasicoConocimiento",
+                "description": "create NucleoBasicoConocimiento",
                 "operationId": "NucleoBasicoConocimientoController.Post",
                 "parameters": [
                     {
@@ -253,13 +258,13 @@
                         "description": "body for NucleoBasicoConocimiento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                            "$ref": "#/definitions/models.NucleoBasicoConocimiento"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "models.NucleoBasicoConocimiento"
+                        "description": "{int} models.NucleoBasicoConocimiento"
                     },
                     "403": {
                         "description": "body is empty"
@@ -272,7 +277,7 @@
                 "tags": [
                     "nucleo_basico_conocimiento"
                 ],
-                "summary": "get NucleoBasicoConocimiento by id",
+                "description": "get NucleoBasicoConocimiento by id",
                 "operationId": "NucleoBasicoConocimientoController.Get",
                 "parameters": [
                     {
@@ -285,9 +290,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.NucleoBasicoConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                            "$ref": "#/definitions/models.NucleoBasicoConocimiento"
                         }
                     },
                     "403": {
@@ -299,7 +304,7 @@
                 "tags": [
                     "nucleo_basico_conocimiento"
                 ],
-                "summary": "update the NucleoBasicoConocimiento",
+                "description": "update the NucleoBasicoConocimiento",
                 "operationId": "NucleoBasicoConocimientoController.Update",
                 "parameters": [
                     {
@@ -315,15 +320,15 @@
                         "description": "body for NucleoBasicoConocimiento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                            "$ref": "#/definitions/models.NucleoBasicoConocimiento"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.NucleoBasicoConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                            "$ref": "#/definitions/models.NucleoBasicoConocimiento"
                         }
                     },
                     "403": {
@@ -335,7 +340,7 @@
                 "tags": [
                     "nucleo_basico_conocimiento"
                 ],
-                "summary": "delete the NucleoBasicoConocimiento",
+                "description": "delete the NucleoBasicoConocimiento",
                 "operationId": "NucleoBasicoConocimientoController.Delete",
                 "parameters": [
                     {
@@ -348,7 +353,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "delete success!"
+                        "description": "{string} delete success!"
                     },
                     "403": {
                         "description": "id is empty"
@@ -361,7 +366,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "summary": "get TipoDatoAdicional",
+                "description": "get TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Get All",
                 "parameters": [
                     {
@@ -403,19 +408,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.TipoDatoAdicional",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/TipoDatoAdicional"
+                            "$ref": "#/definitions/models.TipoDatoAdicional"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "summary": "create TipoDatoAdicional",
+                "description": "create TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Post",
                 "parameters": [
                     {
@@ -424,13 +431,13 @@
                         "description": "body for TipoDatoAdicional content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/TipoDatoAdicional"
+                            "$ref": "#/definitions/models.TipoDatoAdicional"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "models.TipoDatoAdicional"
+                        "description": "{int} models.TipoDatoAdicional"
                     },
                     "403": {
                         "description": "body is empty"
@@ -443,7 +450,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "summary": "get TipoDatoAdicional by id",
+                "description": "get TipoDatoAdicional by id",
                 "operationId": "TipoDatoAdicionalController.Get One",
                 "parameters": [
                     {
@@ -456,9 +463,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.TipoDatoAdicional",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/TipoDatoAdicional"
+                            "$ref": "#/definitions/models.TipoDatoAdicional"
                         }
                     },
                     "403": {
@@ -470,7 +477,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "summary": "update the TipoDatoAdicional",
+                "description": "update the TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Put",
                 "parameters": [
                     {
@@ -486,15 +493,15 @@
                         "description": "body for TipoDatoAdicional content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/TipoDatoAdicional"
+                            "$ref": "#/definitions/models.TipoDatoAdicional"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.TipoDatoAdicional",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/TipoDatoAdicional"
+                            "$ref": "#/definitions/models.TipoDatoAdicional"
                         }
                     },
                     "403": {
@@ -506,7 +513,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "summary": "delete the TipoDatoAdicional",
+                "description": "delete the TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Delete",
                 "parameters": [
                     {
@@ -519,7 +526,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "delete success!"
+                        "description": "{string} delete success!"
                     },
                     "403": {
                         "description": "id is empty"
@@ -532,7 +539,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "summary": "get UnidadTiempo",
+                "description": "get UnidadTiempo",
                 "operationId": "UnidadTiempoController.Get All",
                 "parameters": [
                     {
@@ -574,19 +581,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.UnidadTiempo",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/UnidadTiempo"
+                            "$ref": "#/definitions/models.UnidadTiempo"
                         }
                     },
-                    "403": {}
+                    "403": {
+                        "description": ""
+                    }
                 }
             },
             "post": {
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "summary": "create UnidadTiempo",
+                "description": "create UnidadTiempo",
                 "operationId": "UnidadTiempoController.Post",
                 "parameters": [
                     {
@@ -595,13 +604,13 @@
                         "description": "body for UnidadTiempo content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/UnidadTiempo"
+                            "$ref": "#/definitions/models.UnidadTiempo"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "models.UnidadTiempo"
+                        "description": "{int} models.UnidadTiempo"
                     },
                     "403": {
                         "description": "body is empty"
@@ -614,7 +623,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "summary": "get UnidadTiempo by id",
+                "description": "get UnidadTiempo by id",
                 "operationId": "UnidadTiempoController.Get One",
                 "parameters": [
                     {
@@ -627,9 +636,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.UnidadTiempo",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/UnidadTiempo"
+                            "$ref": "#/definitions/models.UnidadTiempo"
                         }
                     },
                     "403": {
@@ -641,7 +650,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "summary": "update the UnidadTiempo",
+                "description": "update the UnidadTiempo",
                 "operationId": "UnidadTiempoController.Put",
                 "parameters": [
                     {
@@ -657,15 +666,15 @@
                         "description": "body for UnidadTiempo content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/UnidadTiempo"
+                            "$ref": "#/definitions/models.UnidadTiempo"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.UnidadTiempo",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/UnidadTiempo"
+                            "$ref": "#/definitions/models.UnidadTiempo"
                         }
                     },
                     "403": {
@@ -677,7 +686,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "summary": "delete the UnidadTiempo",
+                "description": "delete the UnidadTiempo",
                 "operationId": "UnidadTiempoController.Delete",
                 "parameters": [
                     {
@@ -690,7 +699,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "delete success!"
+                        "description": "{string} delete success!"
                     },
                     "403": {
                         "description": "id is empty"
@@ -700,7 +709,7 @@
         }
     },
     "definitions": {
-        "AreaConocimiento": {
+        "models.AreaConocimiento": {
             "title": "AreaConocimiento",
             "type": "object",
             "properties": {
@@ -726,7 +735,7 @@
                 }
             }
         },
-        "NucleoBasicoConocimiento": {
+        "models.NucleoBasicoConocimiento": {
             "title": "NucleoBasicoConocimiento",
             "type": "object",
             "properties": {
@@ -734,7 +743,7 @@
                     "type": "boolean"
                 },
                 "AreaConocimiento": {
-                    "$ref": "#/definitions/AreaConocimiento"
+                    "$ref": "#/definitions/models.AreaConocimiento"
                 },
                 "CodigoAbreviacion": {
                     "type": "string"
@@ -755,7 +764,7 @@
                 }
             }
         },
-        "TipoDatoAdicional": {
+        "models.TipoDatoAdicional": {
             "title": "TipoDatoAdicional",
             "type": "object",
             "properties": {
@@ -781,7 +790,7 @@
                 }
             }
         },
-        "UnidadTiempo": {
+        "models.UnidadTiempo": {
             "title": "UnidadTiempo",
             "type": "object",
             "properties": {
