@@ -16,5 +16,3 @@ luego debes ir a la raiz del proyecto en tu gopath
 y ejecutas con go y las variables de entorno que deses aplicar
 
 	//definición variables de entorno, VARIABLE1=value1// go run main.go
-
-
