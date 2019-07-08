@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type PeriodoAcademico struct {
+type Periodo struct {
 	Id                int     `orm:"column(id);pk;auto"`
 	Nombre            string  `orm:"column(nombre)"`
 	Descripcion       string  `orm:"column(descripcion);null"`
@@ -18,39 +18,39 @@ type PeriodoAcademico struct {
 	NumeroOrden       float64 `orm:"column(numero_orden);null"`
 }
 
-func (t *PeriodoAcademico) TableName() string {
-	return "periodo_academico"
+func (t *Periodo) TableName() string {
+	return "periodo"
 }
 
 func init() {
-	orm.RegisterModel(new(PeriodoAcademico))
+	orm.RegisterModel(new(Periodo))
 }
 
-// AddPeriodoAcademico insert a new PeriodoAcademico into database and returns
+// AddPeriodo insert a new Periodo into database and returns
 // last inserted Id on success.
-func AddPeriodoAcademico(m *PeriodoAcademico) (id int64, err error) {
+func AddPeriodo(m *Periodo) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetPeriodoAcademicoById retrieves PeriodoAcademico by Id. Returns error if
+// GetPeriodoById retrieves Periodo by Id. Returns error if
 // Id doesn't exist
-func GetPeriodoAcademicoById(id int) (v *PeriodoAcademico, err error) {
+func GetPeriodoById(id int) (v *Periodo, err error) {
 	o := orm.NewOrm()
-	v = &PeriodoAcademico{Id: id}
+	v = &Periodo{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllPeriodoAcademico retrieves all PeriodoAcademico matches certain condition. Returns empty list if
+// GetAllPeriodo retrieves all Periodo matches certain condition. Returns empty list if
 // no records exist
-func GetAllPeriodoAcademico(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllPeriodo(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(PeriodoAcademico)).RelatedSel()
+	qs := o.QueryTable(new(Periodo)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -100,7 +100,7 @@ func GetAllPeriodoAcademico(query map[string]string, fields []string, sortby []s
 		}
 	}
 
-	var l []PeriodoAcademico
+	var l []Periodo
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -123,11 +123,11 @@ func GetAllPeriodoAcademico(query map[string]string, fields []string, sortby []s
 	return nil, err
 }
 
-// UpdatePeriodoAcademico updates PeriodoAcademico by Id and returns error if
+// UpdatePeriodo updates Periodo by Id and returns error if
 // the record to be updated doesn't exist
-func UpdatePeriodoAcademicoById(m *PeriodoAcademico) (err error) {
+func UpdatePeriodoById(m *Periodo) (err error) {
 	o := orm.NewOrm()
-	v := PeriodoAcademico{Id: m.Id}
+	v := Periodo{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -138,15 +138,15 @@ func UpdatePeriodoAcademicoById(m *PeriodoAcademico) (err error) {
 	return
 }
 
-// DeletePeriodoAcademico deletes PeriodoAcademico by Id and returns error if
+// DeletePeriodo deletes Periodo by Id and returns error if
 // the record to be deleted doesn't exist
-func DeletePeriodoAcademico(id int) (err error) {
+func DeletePeriodo(id int) (err error) {
 	o := orm.NewOrm()
-	v := PeriodoAcademico{Id: id}
+	v := Periodo{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&PeriodoAcademico{Id: id}); err == nil {
+		if num, err = o.Delete(&Periodo{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

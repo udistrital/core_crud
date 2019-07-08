@@ -27,9 +27,9 @@ func init() {
 				&controllers.TipoDatoAdicionalController{},
 			),
 		),
-		beego.NSNamespace("/periodo_academico",
+		beego.NSNamespace("/periodo",
 			beego.NSInclude(
-				&controllers.PeriodoAcademicoController{},
+				&controllers.PeriodoController{},
 			),
 		),
 	)

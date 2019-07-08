@@ -6,19 +6,19 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/udistrital/periodo/models"
+	"github.com/udistrital/core_crud/models"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 )
 
-// PeriodoAcademicoController operations for PeriodoAcademico
-type PeriodoAcademicoController struct {
+// PeriodoController operations for Periodo
+type PeriodoController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *PeriodoAcademicoController) URLMapping() {
+func (c *PeriodoController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -28,15 +28,15 @@ func (c *PeriodoAcademicoController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create PeriodoAcademico
-// @Param	body		body 	models.PeriodoAcademico	true		"body for PeriodoAcademico content"
-// @Success 201 {int} models.PeriodoAcademico
+// @Description create Periodo
+// @Param	body		body 	models.Periodo	true		"body for Periodo content"
+// @Success 201 {int} models.Periodo
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
-func (c *PeriodoAcademicoController) Post() {
-	var v models.PeriodoAcademico
+func (c *PeriodoController) Post() {
+	var v models.Periodo
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddPeriodoAcademico(&v); err == nil {
+		if _, err := models.AddPeriodo(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -56,15 +56,15 @@ func (c *PeriodoAcademicoController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get PeriodoAcademico by id
+// @Description get Periodo by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.PeriodoAcademico
+// @Success 200 {object} models.Periodo
 // @Failure 404 not found resource
 // @router /:id [get]
-func (c *PeriodoAcademicoController) GetOne() {
+func (c *PeriodoController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetPeriodoAcademicoById(id)
+	v, err := models.GetPeriodoById(id)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
@@ -78,17 +78,17 @@ func (c *PeriodoAcademicoController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get PeriodoAcademico
+// @Description get Periodo
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.PeriodoAcademico
+// @Success 200 {object} models.Periodo
 // @Failure 404 not found resource
 // @router / [get]
-func (c *PeriodoAcademicoController) GetAll() {
+func (c *PeriodoController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -130,7 +130,7 @@ func (c *PeriodoAcademicoController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllPeriodoAcademico(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllPeriodo(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
@@ -153,12 +153,12 @@ func (c *PeriodoAcademicoController) GetAll() {
 // @Success 200 {object} models.PeriodoAcademico
 // @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
-func (c *PeriodoAcademicoController) Put() {
+func (c *PeriodoController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.PeriodoAcademico{Id: id}
+	v := models.Periodo{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdatePeriodoAcademicoById(&v); err == nil {
+		if err := models.UpdatePeriodoById(&v); err == nil {
 			c.Data["json"] = v
 		} else {
 			logs.Error(err)
@@ -177,15 +177,15 @@ func (c *PeriodoAcademicoController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the PeriodoAcademico
+// @Description delete the Periodo
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
-func (c *PeriodoAcademicoController) Delete() {
+func (c *PeriodoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeletePeriodoAcademico(id); err == nil {
+	if err := models.DeletePeriodo(id); err == nil {
 		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
 		logs.Error(err)
