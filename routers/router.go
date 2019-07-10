@@ -27,11 +27,13 @@ func init() {
 				&controllers.TipoDatoAdicionalController{},
 			),
 		),
+
 		beego.NSNamespace("/periodo",
 			beego.NSInclude(
 				&controllers.PeriodoController{},
 			),
 		),
+
 		beego.NSNamespace("/tipo_periodo",
 			beego.NSInclude(
 				&controllers.TipoPeriodoController{},
