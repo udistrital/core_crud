@@ -147,10 +147,10 @@ func (c *PeriodoController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the PeriodoAcademico
+// @Description update the Periodo
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.PeriodoAcademico	true		"body for PeriodoAcademico content"
-// @Success 200 {object} models.PeriodoAcademico
+// @Param	body		body 	models.Periodo	true		"body for Periodo content"
+// @Success 200 {object} models.Periodo
 // @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
 func (c *PeriodoController) Put() {
