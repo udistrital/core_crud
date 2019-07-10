@@ -32,6 +32,11 @@ func init() {
 				&controllers.PeriodoController{},
 			),
 		),
+		beego.NSNamespace("/tipo_periodo",
+			beego.NSInclude(
+				&controllers.TipoPeriodoController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
