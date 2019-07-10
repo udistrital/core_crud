@@ -361,13 +361,13 @@
                 }
             }
         },
-        "/periodo_academico/": {
+        "/periodo/": {
             "get": {
                 "tags": [
-                    "periodo_academico"
+                    "periodo"
                 ],
-                "description": "get PeriodoAcademico",
-                "operationId": "PeriodoAcademicoController.Get All",
+                "description": "get Periodo",
+                "operationId": "PeriodoController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -410,7 +410,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.PeriodoAcademico"
+                            "$ref": "#/definitions/models.Periodo"
                         }
                     },
                     "404": {
@@ -420,24 +420,24 @@
             },
             "post": {
                 "tags": [
-                    "periodo_academico"
+                    "periodo"
                 ],
-                "description": "create PeriodoAcademico",
-                "operationId": "PeriodoAcademicoController.Post",
+                "description": "create Periodo",
+                "operationId": "PeriodoController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for PeriodoAcademico content",
+                        "description": "body for Periodo content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.PeriodoAcademico"
+                            "$ref": "#/definitions/models.Periodo"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.PeriodoAcademico"
+                        "description": "{int} models.Periodo"
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -445,13 +445,13 @@
                 }
             }
         },
-        "/periodo_academico/{id}": {
+        "/periodo/{id}": {
             "get": {
                 "tags": [
-                    "periodo_academico"
+                    "periodo"
                 ],
-                "description": "get PeriodoAcademico by id",
-                "operationId": "PeriodoAcademicoController.Get One",
+                "description": "get Periodo by id",
+                "operationId": "PeriodoController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -465,7 +465,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.PeriodoAcademico"
+                            "$ref": "#/definitions/models.Periodo"
                         }
                     },
                     "404": {
@@ -475,10 +475,10 @@
             },
             "put": {
                 "tags": [
-                    "periodo_academico"
+                    "periodo"
                 ],
-                "description": "update the PeriodoAcademico",
-                "operationId": "PeriodoAcademicoController.Put",
+                "description": "update the Periodo",
+                "operationId": "PeriodoController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -490,10 +490,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for PeriodoAcademico content",
+                        "description": "body for Periodo content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.PeriodoAcademico"
+                            "$ref": "#/definitions/models.Periodo"
                         }
                     }
                 ],
@@ -501,7 +501,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.PeriodoAcademico"
+                            "$ref": "#/definitions/models.Periodo"
                         }
                     },
                     "400": {
@@ -511,10 +511,10 @@
             },
             "delete": {
                 "tags": [
-                    "periodo_academico"
+                    "periodo"
                 ],
-                "description": "delete the PeriodoAcademico",
-                "operationId": "PeriodoAcademicoController.Delete",
+                "description": "delete the Periodo",
+                "operationId": "PeriodoController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -703,6 +703,179 @@
                     },
                     "403": {
                         "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/tipo_periodo/": {
+            "get": {
+                "tags": [
+                    "tipo_periodo"
+                ],
+                "description": "get TipoPeriodo",
+                "operationId": "TipoPeriodoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPeriodo"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tipo_periodo"
+                ],
+                "description": "create TipoPeriodo",
+                "operationId": "TipoPeriodoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoPeriodo content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPeriodo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TipoPeriodo"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tipo_periodo/{id}": {
+            "get": {
+                "tags": [
+                    "tipo_periodo"
+                ],
+                "description": "get TipoPeriodo by id",
+                "operationId": "TipoPeriodoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPeriodo"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "tipo_periodo"
+                ],
+                "description": "update the TipoPeriodo",
+                "operationId": "TipoPeriodoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoPeriodo content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPeriodo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPeriodo"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tipo_periodo"
+                ],
+                "description": "delete the TipoPeriodo",
+                "operationId": "TipoPeriodoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -937,8 +1110,45 @@
                 }
             }
         },
-        "models.PeriodoAcademico": {
-            "title": "PeriodoAcademico",
+        "models.Periodo": {
+            "title": "Periodo",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "TipoPeriodo": {
+                    "$ref": "#/definitions/models.TipoPeriodo"
+                }
+            }
+        },
+        "models.TipoDatoAdicional": {
+            "title": "TipoDatoAdicional",
             "type": "object",
             "properties": {
                 "Activo": {
@@ -963,8 +1173,8 @@
                 }
             }
         },
-        "models.TipoDatoAdicional": {
-            "title": "TipoDatoAdicional",
+        "models.TipoPeriodo": {
+            "title": "TipoPeriodo",
             "type": "object",
             "properties": {
                 "Activo": {
@@ -975,6 +1185,14 @@
                 },
                 "Descripcion": {
                     "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
                 },
                 "Id": {
                     "type": "integer",
@@ -1034,8 +1252,12 @@
             "description": "oprations for NucleoBasicoConocimiento\n"
         },
         {
-            "name": "periodo_academico",
-            "description": "PeriodoAcademicoController operations for PeriodoAcademico\n"
+            "name": "periodo",
+            "description": "PeriodoController operations for Periodo\n"
+        },
+        {
+            "name": "tipo_periodo",
+            "description": "TipoPeriodoController operations for TipoPeriodo\n"
         }
     ]
 }
