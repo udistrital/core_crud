@@ -39,7 +39,7 @@ func init() {
 				&controllers.NucleoBasicoConocimientoController{},
 			),
 		),
-		
+
 		beego.NSNamespace("/periodo",
 			beego.NSInclude(
 				&controllers.PeriodoController{},
@@ -49,6 +49,12 @@ func init() {
 		beego.NSNamespace("/tipo_periodo",
 			beego.NSInclude(
 				&controllers.TipoPeriodoController{},
+			),
+		),
+
+		beego.NSNamespace("/grupo_investigacion",
+			beego.NSInclude(
+				&controllers.GrupoInvestigacionController{},
 			),
 		),
 	)
