@@ -11,14 +11,13 @@ import (
 )
 
 type TipoPeriodo struct {
-	Id                int       `orm:"column(id);pk;auto"`
-	Nombre            string    `orm:"column(nombre)"`
-	Descripcion       string    `orm:"column(descripcion);null"`
-	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
-	Activo            bool      `orm:"column(activo)"`
-	NumeroOrden       float64   `orm:"column(numero_orden);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	Id                int     `orm:"column(id);pk;auto"`
+	Nombre            string  `orm:"column(nombre)"`
+	Descripcion       string  `orm:"column(descripcion);null"`
+	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
+	Activo            bool    `orm:"column(activo)"`
+	NumeroOrden       float64 `orm:"column(numero_orden);null"`
+	FechaModificacion string  `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *TipoPeriodo) TableName() string {
@@ -32,6 +31,9 @@ func init() {
 // AddTipoPeriodo insert a new TipoPeriodo into database and returns
 // last inserted Id on success.
 func AddTipoPeriodo(m *TipoPeriodo) (id int64, err error) {
+	var t time.Time
+	t = time.Now()
+	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -131,6 +133,9 @@ func GetAllTipoPeriodo(query map[string]string, fields []string, sortby []string
 func UpdateTipoPeriodoById(m *TipoPeriodo) (err error) {
 	o := orm.NewOrm()
 	v := TipoPeriodo{Id: m.Id}
+	var t time.Time
+	t = time.Now()
+	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64

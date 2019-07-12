@@ -2,11 +2,12 @@ package controllers
 
 import (
 	"encoding/json"
-	"errors"
 	"strconv"
 	"strings"
 
+	"github.com/fatih/structs"
 	"github.com/planesticud/core_crud/models"
+	"github.com/udistrital/utils_oas/formatdata"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
@@ -38,18 +39,26 @@ func (c *TipoPeriodoController) Post() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models.AddTipoPeriodo(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+			c.Data["json"] = models.Alert{Type: "success", Code: "S_201", Body: v}
+			//c.Ctx.Output.SetStatus(201)
+			//c.Data["json"] = v
 		} else {
 			logs.Error(err)
+			alertdb := structs.Map(err)
+			var code string
+			formatdata.FillStruct(alertdb["Code"], &code)
+			alert := models.Alert{Type: "error", Code: "E_" + code, Body: err.Error()}
+			c.Data["json"] = alert
 			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-			c.Data["system"] = err
-			c.Abort("400")
+			//c.Data["system"] = err
+			//c.Abort("400")
 		}
 	} else {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-		c.Data["system"] = err
-		c.Abort("400")
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		//c.Data["system"] = err
+		//c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -67,9 +76,10 @@ func (c *TipoPeriodoController) GetOne() {
 	v, err := models.GetTipoPeriodoById(id)
 	if err != nil {
 		logs.Error(err)
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-		c.Data["system"] = err
-		c.Abort("404")
+		//c.Data["system"] = err
+		//c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
@@ -121,7 +131,8 @@ func (c *TipoPeriodoController) GetAll() {
 		for _, cond := range strings.Split(v, ",") {
 			kv := strings.SplitN(cond, ":", 2)
 			if len(kv) != 2 {
-				c.Data["json"] = errors.New("Error: invalid query key/value pair")
+				c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: "Error: invalid query key/value pair"}
+				//c.Data["json"] = errors.New("Error: invalid query key/value pair")
 				c.ServeJSON()
 				return
 			}
@@ -134,8 +145,9 @@ func (c *TipoPeriodoController) GetAll() {
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-		c.Data["system"] = err
-		c.Abort("404")
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		//c.Data["system"] = err
+		//c.Abort("404")
 	} else {
 		if l == nil {
 			l = append(l, map[string]interface{}{})
@@ -159,18 +171,26 @@ func (c *TipoPeriodoController) Put() {
 	v := models.TipoPeriodo{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateTipoPeriodoById(&v); err == nil {
-			c.Data["json"] = v
+			c.Ctx.Output.SetStatus(200)
+			c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: v}
+			//c.Data["json"] = v
 		} else {
 			logs.Error(err)
+			alertdb := structs.Map(err)
+			var code string
+			formatdata.FillStruct(alertdb["Code"], &code)
+			alert := models.Alert{Type: "error", Code: "E_" + code, Body: err.Error()}
+			c.Data["json"] = alert
 			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-			c.Data["system"] = err
-			c.Abort("400")
+			//c.Data["system"] = err
+			//c.Abort("400")
 		}
 	} else {
 		logs.Error(err)
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-		c.Data["system"] = err
-		c.Abort("400")
+		//c.Data["system"] = err
+		//c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -186,12 +206,14 @@ func (c *TipoPeriodoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteTipoPeriodo(id); err == nil {
-		c.Data["json"] = map[string]interface{}{"Id": id}
+		c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: "OK"}
+		//c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
 		logs.Error(err)
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-		c.Data["system"] = err
-		c.Abort("404")
+		//c.Data["system"] = err
+		//c.Abort("404")
 	}
 	c.ServeJSON()
 }

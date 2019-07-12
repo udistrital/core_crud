@@ -97,6 +97,51 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:LineaInvestigacionController"] = append(beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:LineaInvestigacionController"],
+        beego.ControllerComments{
+            Method: "Post",
+            Router: `/`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:LineaInvestigacionController"] = append(beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:LineaInvestigacionController"],
+        beego.ControllerComments{
+            Method: "GetAll",
+            Router: `/`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:LineaInvestigacionController"] = append(beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:LineaInvestigacionController"],
+        beego.ControllerComments{
+            Method: "GetOne",
+            Router: `/:id`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:LineaInvestigacionController"] = append(beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:LineaInvestigacionController"],
+        beego.ControllerComments{
+            Method: "Put",
+            Router: `/:id`,
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:LineaInvestigacionController"] = append(beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:LineaInvestigacionController"],
+        beego.ControllerComments{
+            Method: "Delete",
+            Router: `/:id`,
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:NucleoBasicoConocimientoController"] = append(beego.GlobalControllerRouter["github.com/planesticud/core_crud/controllers:NucleoBasicoConocimientoController"],
         beego.ControllerComments{
             Method: "Post",

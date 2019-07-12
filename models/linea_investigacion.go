@@ -10,27 +10,28 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type TipoDatoAdicional struct {
-	Id                int     `orm:"column(id);pk;auto"`
-	Nombre            string  `orm:"column(nombre)"`
-	Descripcion       string  `orm:"column(descripcion);null"`
-	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
-	Activo            bool    `orm:"column(activo)"`
-	NumeroOrden       float64 `orm:"column(numero_orden);null"`
-	FechaModificacion string  `orm:"column(fecha_modificacion);null"`
+type LineaInvestigacion struct {
+	Id                 int     `orm:"column(id);pk;auto"`
+	Nombre             string  `orm:"column(nombre)"`
+	Descripcion        string  `orm:"column(descripcion);null"`
+	CodigoAbreviacion  string  `orm:"column(codigo_abreviacion);null"`
+	Activo             bool    `orm:"column(activo)"`
+	NumeroOrden        float64 `orm:"column(numero_orden);null"`
+	GrupoInvestigacion int     `orm:"column(grupo_investigacion)"`
+	FechaModificacion  string  `orm:"column(fecha_modificacion);null"`
 }
 
-func (t *TipoDatoAdicional) TableName() string {
-	return "tipo_dato_adicional"
+func (t *LineaInvestigacion) TableName() string {
+	return "linea_investigacion"
 }
 
 func init() {
-	orm.RegisterModel(new(TipoDatoAdicional))
+	orm.RegisterModel(new(LineaInvestigacion))
 }
 
-// AddTipoDatoAdicional insert a new TipoDatoAdicional into database and returns
+// AddLineaInvestigacion insert a new LineaInvestigacion into database and returns
 // last inserted Id on success.
-func AddTipoDatoAdicional(m *TipoDatoAdicional) (id int64, err error) {
+func AddLineaInvestigacion(m *LineaInvestigacion) (id int64, err error) {
 	var t time.Time
 	t = time.Now()
 	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
@@ -39,23 +40,23 @@ func AddTipoDatoAdicional(m *TipoDatoAdicional) (id int64, err error) {
 	return
 }
 
-// GetTipoDatoAdicionalById retrieves TipoDatoAdicional by Id. Returns error if
+// GetLineaInvestigacionById retrieves LineaInvestigacion by Id. Returns error if
 // Id doesn't exist
-func GetTipoDatoAdicionalById(id int) (v *TipoDatoAdicional, err error) {
+func GetLineaInvestigacionById(id int) (v *LineaInvestigacion, err error) {
 	o := orm.NewOrm()
-	v = &TipoDatoAdicional{Id: id}
+	v = &LineaInvestigacion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllTipoDatoAdicional retrieves all TipoDatoAdicional matches certain condition. Returns empty list if
+// GetAllLineaInvestigacion retrieves all LineaInvestigacion matches certain condition. Returns empty list if
 // no records exist
-func GetAllTipoDatoAdicional(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllLineaInvestigacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(TipoDatoAdicional))
+	qs := o.QueryTable(new(LineaInvestigacion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -105,7 +106,7 @@ func GetAllTipoDatoAdicional(query map[string]string, fields []string, sortby []
 		}
 	}
 
-	var l []TipoDatoAdicional
+	var l []LineaInvestigacion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -128,11 +129,11 @@ func GetAllTipoDatoAdicional(query map[string]string, fields []string, sortby []
 	return nil, err
 }
 
-// UpdateTipoDatoAdicional updates TipoDatoAdicional by Id and returns error if
+// UpdateLineaInvestigacion updates LineaInvestigacion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateTipoDatoAdicionalById(m *TipoDatoAdicional) (err error) {
+func UpdateLineaInvestigacionById(m *LineaInvestigacion) (err error) {
 	o := orm.NewOrm()
-	v := TipoDatoAdicional{Id: m.Id}
+	v := LineaInvestigacion{Id: m.Id}
 	var t time.Time
 	t = time.Now()
 	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
@@ -146,15 +147,15 @@ func UpdateTipoDatoAdicionalById(m *TipoDatoAdicional) (err error) {
 	return
 }
 
-// DeleteTipoDatoAdicional deletes TipoDatoAdicional by Id and returns error if
+// DeleteLineaInvestigacion deletes LineaInvestigacion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteTipoDatoAdicional(id int) (err error) {
+func DeleteLineaInvestigacion(id int) (err error) {
 	o := orm.NewOrm()
-	v := TipoDatoAdicional{Id: id}
+	v := LineaInvestigacion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&TipoDatoAdicional{Id: id}); err == nil {
+		if num, err = o.Delete(&LineaInvestigacion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

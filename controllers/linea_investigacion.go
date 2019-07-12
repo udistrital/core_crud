@@ -10,14 +10,16 @@ import (
 	"github.com/udistrital/utils_oas/formatdata"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 )
 
-// oprations for NucleoBasicoConocimiento
-type NucleoBasicoConocimientoController struct {
+// LineaInvestigacionController operations for LineaInvestigacion
+type LineaInvestigacionController struct {
 	beego.Controller
 }
 
-func (c *NucleoBasicoConocimientoController) URLMapping() {
+// URLMapping ...
+func (c *LineaInvestigacionController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -25,72 +27,84 @@ func (c *NucleoBasicoConocimientoController) URLMapping() {
 	c.Mapping("Delete", c.Delete)
 }
 
+// Post ...
 // @Title Post
-// @Description create NucleoBasicoConocimiento
-// @Param	body		body 	models.NucleoBasicoConocimiento	true		"body for NucleoBasicoConocimiento content"
-// @Success 201 {int} models.NucleoBasicoConocimiento
+// @Description create LineaInvestigacion
+// @Param	body		body 	models.LineaInvestigacion	true		"body for LineaInvestigacion content"
+// @Success 201 {int} models.LineaInvestigacion
 // @Failure 403 body is empty
 // @router / [post]
-func (c *NucleoBasicoConocimientoController) Post() {
-	var v models.NucleoBasicoConocimiento
+func (c *LineaInvestigacionController) Post() {
+	var v models.LineaInvestigacion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddNucleoBasicoConocimiento(&v); err == nil {
+		if _, err := models.AddLineaInvestigacion(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = models.Alert{Type: "success", Code: "S_201", Body: v}
 			//c.Ctx.Output.SetStatus(201)
 			//c.Data["json"] = v
 		} else {
+			logs.Error(err)
 			alertdb := structs.Map(err)
 			var code string
 			formatdata.FillStruct(alertdb["Code"], &code)
 			alert := models.Alert{Type: "error", Code: "E_" + code, Body: err.Error()}
 			c.Data["json"] = alert
-			//c.Data["json"] = err.Error()
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			//c.Data["system"] = err
+			//c.Abort("400")
 		}
 	} else {
+		logs.Error(err)
 		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
-		//c.Data["json"] = err.Error()
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		//c.Data["system"] = err
+		//c.Abort("400")
 	}
 	c.ServeJSON()
 }
 
-// @Title Get
-// @Description get NucleoBasicoConocimiento by id
+// GetOne ...
+// @Title Get One
+// @Description get LineaInvestigacion by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.NucleoBasicoConocimiento
+// @Success 200 {object} models.LineaInvestigacion
 // @Failure 403 :id is empty
 // @router /:id [get]
-func (c *NucleoBasicoConocimientoController) GetOne() {
+func (c *LineaInvestigacionController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetNucleoBasicoConocimientoById(id)
+	v, err := models.GetLineaInvestigacionById(id)
 	if err != nil {
+		logs.Error(err)
 		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
-		//c.Data["json"] = err.Error()
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		//c.Data["system"] = err
+		//c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
 	c.ServeJSON()
 }
 
+// GetAll ...
 // @Title Get All
-// @Description get NucleoBasicoConocimiento
+// @Description get LineaInvestigacion
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.NucleoBasicoConocimiento
+// @Success 200 {object} models.LineaInvestigacion
 // @Failure 403
 // @router / [get]
-func (c *NucleoBasicoConocimientoController) GetAll() {
+func (c *LineaInvestigacionController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
-	var query map[string]string = make(map[string]string)
+	var query = make(map[string]string)
 	var limit int64 = 10
-	var offset int64 = 0
+	var offset int64
 
 	// fields: col1,col2,entity.col3
 	if v := c.GetString("fields"); v != "" {
@@ -127,62 +141,79 @@ func (c *NucleoBasicoConocimientoController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllNucleoBasicoConocimiento(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllLineaInvestigacion(query, fields, sortby, order, offset, limit)
 	if err != nil {
+		logs.Error(err)
 		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
-		//c.Data["json"] = err.Error()
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		//c.Data["system"] = err
+		//c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
 }
 
-// @Title Update
-// @Description update the NucleoBasicoConocimiento
+// Put ...
+// @Title Put
+// @Description update the LineaInvestigacion
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.NucleoBasicoConocimiento	true		"body for NucleoBasicoConocimiento content"
-// @Success 200 {object} models.NucleoBasicoConocimiento
+// @Param	body		body 	models.LineaInvestigacion	true		"body for LineaInvestigacion content"
+// @Success 200 {object} models.LineaInvestigacion
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *NucleoBasicoConocimientoController) Put() {
+func (c *LineaInvestigacionController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.NucleoBasicoConocimiento{Id: id}
+	v := models.LineaInvestigacion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateNucleoBasicoConocimientoById(&v); err == nil {
+		if err := models.UpdateLineaInvestigacionById(&v); err == nil {
 			c.Ctx.Output.SetStatus(200)
 			c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: v}
-			//c.Data["json"] = "OK"
+			//c.Data["json"] = v
 		} else {
+			logs.Error(err)
 			alertdb := structs.Map(err)
 			var code string
 			formatdata.FillStruct(alertdb["Code"], &code)
 			alert := models.Alert{Type: "error", Code: "E_" + code, Body: err.Error()}
 			c.Data["json"] = alert
-			//c.Data["json"] = err.Error()
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			//c.Data["system"] = err
+			//c.Abort("400")
 		}
 	} else {
+		logs.Error(err)
 		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
-		//c.Data["json"] = err.Error()
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		//c.Data["system"] = err
+		//c.Abort("400")
 	}
 	c.ServeJSON()
 }
 
+// Delete ...
 // @Title Delete
-// @Description delete the NucleoBasicoConocimiento
+// @Description delete the LineaInvestigacion
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *NucleoBasicoConocimientoController) Delete() {
+func (c *LineaInvestigacionController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteNucleoBasicoConocimiento(id); err == nil {
+	if err := models.DeleteLineaInvestigacion(id); err == nil {
 		c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: "OK"}
-		//c.Data["json"] = "OK"
+		//c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
+		logs.Error(err)
 		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
-		//c.Data["json"] = err.Error()
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		//c.Data["system"] = err
+		//c.Abort("404")
 	}
 	c.ServeJSON()
 }

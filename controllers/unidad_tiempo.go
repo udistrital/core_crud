@@ -2,11 +2,12 @@ package controllers
 
 import (
 	"encoding/json"
-	"errors"
 	"strconv"
 	"strings"
 
+	"github.com/fatih/structs"
 	"github.com/planesticud/core_crud/models"
+	"github.com/udistrital/utils_oas/formatdata"
 
 	"github.com/astaxie/beego"
 )
@@ -37,12 +38,20 @@ func (c *UnidadTiempoController) Post() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models.AddUnidadTiempo(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+			c.Data["json"] = models.Alert{Type: "success", Code: "S_201", Body: v}
+			//c.Ctx.Output.SetStatus(201)
+			//c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			alertdb := structs.Map(err)
+			var code string
+			formatdata.FillStruct(alertdb["Code"], &code)
+			alert := models.Alert{Type: "error", Code: "E_" + code, Body: err.Error()}
+			c.Data["json"] = alert
+			//c.Data["json"] = err.Error()
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		//c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
 }
@@ -59,7 +68,8 @@ func (c *UnidadTiempoController) GetOne() {
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetUnidadTiempoById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		//c.Data["json"] = err.Error()
 	} else {
 		c.Data["json"] = v
 	}
@@ -111,7 +121,8 @@ func (c *UnidadTiempoController) GetAll() {
 		for _, cond := range strings.Split(v, ",") {
 			kv := strings.SplitN(cond, ":", 2)
 			if len(kv) != 2 {
-				c.Data["json"] = errors.New("Error: invalid query key/value pair")
+				c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: "Error: invalid query key/value pair"}
+				//c.Data["json"] = errors.New("Error: invalid query key/value pair")
 				c.ServeJSON()
 				return
 			}
@@ -122,7 +133,8 @@ func (c *UnidadTiempoController) GetAll() {
 
 	l, err := models.GetAllUnidadTiempo(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		//c.Data["json"] = err.Error()
 	} else {
 		c.Data["json"] = l
 	}
@@ -143,12 +155,20 @@ func (c *UnidadTiempoController) Put() {
 	v := models.UnidadTiempo{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateUnidadTiempoById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Ctx.Output.SetStatus(200)
+			c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: v}
+			//c.Data["json"] = "OK"
 		} else {
-			c.Data["json"] = err.Error()
+			alertdb := structs.Map(err)
+			var code string
+			formatdata.FillStruct(alertdb["Code"], &code)
+			alert := models.Alert{Type: "error", Code: "E_" + code, Body: err.Error()}
+			c.Data["json"] = alert
+			//c.Data["json"] = err.Error()
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		//c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
 }
@@ -164,9 +184,11 @@ func (c *UnidadTiempoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteUnidadTiempo(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: "OK"}
+		//c.Data["json"] = "OK"
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		//c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
 }

@@ -5,17 +5,19 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type GrupoInvestigacion struct {
-	Id          int     `orm:"column(id);pk;auto"`
-	Nombre      string  `orm:"column(nombre)"`
+	Id                int     `orm:"column(id);pk;auto"`
+	Nombre            string  `orm:"column(nombre)"`
 	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
-	Descripcion string  `orm:"column(descripcion);null"`
-	NumeroOrden float64 `orm:"column(numero_orden);null"`
-	Activo      bool    `orm:"column(activo)"`
+	Descripcion       string  `orm:"column(descripcion);null"`
+	NumeroOrden       float64 `orm:"column(numero_orden);null"`
+	Activo            bool    `orm:"column(activo)"`
+	FechaModificacion string  `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *GrupoInvestigacion) TableName() string {
@@ -29,6 +31,9 @@ func init() {
 // AddGrupoInvestigacion insert a new GrupoInvestigacion into database and returns
 // last inserted Id on success.
 func AddGrupoInvestigacion(m *GrupoInvestigacion) (id int64, err error) {
+	var t time.Time
+	t = time.Now()
+	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -128,6 +133,9 @@ func GetAllGrupoInvestigacion(query map[string]string, fields []string, sortby [
 func UpdateGrupoInvestigacionById(m *GrupoInvestigacion) (err error) {
 	o := orm.NewOrm()
 	v := GrupoInvestigacion{Id: m.Id}
+	var t time.Time
+	t = time.Now()
+	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
