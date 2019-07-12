@@ -12,7 +12,7 @@ import (
 
 type Periodo struct {
 	Id                int          `orm:"column(id);pk;auto"`
-	Año               string       `orm:"column(año)"`
+	Año               string       `orm:"column(ano)"`
 	Periodo           string       `orm:"column(periodo)"`
 	Descripcion       string       `orm:"column(descripcion);null"`
 	CodigoAbreviacion string       `orm:"column(codigo_abreviacion);null"`
