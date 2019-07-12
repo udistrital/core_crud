@@ -478,6 +478,8 @@ definitions:
     properties:
       Activo:
         type: boolean
+      Año:
+        type: string
       CodigoAbreviacion:
         type: string
       Descripcion:
@@ -491,11 +493,11 @@ definitions:
       Id:
         type: integer
         format: int64
-      Nombre:
-        type: string
       NumeroOrden:
         type: number
         format: double
+      Periodo:
+        type: string
       TipoPeriodo:
         $ref: '#/definitions/models.TipoPeriodo'
   models.TipoDatoAdicional:
