@@ -12,14 +12,15 @@ import (
 
 type Periodo struct {
 	Id                int          `orm:"column(id);pk;auto"`
-	Nombre            string       `orm:"column(nombre)"`
+	Año               string       `orm:"column(año)"`
+	Periodo           string       `orm:"column(periodo)"`
 	Descripcion       string       `orm:"column(descripcion);null"`
 	CodigoAbreviacion string       `orm:"column(codigo_abreviacion);null"`
 	Activo            bool         `orm:"column(activo)"`
 	NumeroOrden       float64      `orm:"column(numero_orden);null"`
 	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
 	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
-	TipoPeriodo       *TipoPeriodo `orm:"column(tipo_periodo);rel(fk)"`
+	TipoPeriodo       *TipoPeriodo `orm:"column(tipo_periodo_id);rel(fk)"`
 }
 
 func (t *Periodo) TableName() string {
