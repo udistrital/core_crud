@@ -942,8 +942,12 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
       FechaModificacion:
         type: string
+        format: datetime
       Id:
         type: integer
         format: int64
@@ -962,8 +966,12 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
       FechaModificacion:
         type: string
+        format: datetime
       Id:
         type: integer
         format: int64
@@ -982,9 +990,13 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
       FechaModificacion:
         type: string
-      GrupoInvestigacion:
+        format: datetime
+      GrupoInvestigacionId:
         type: integer
         format: int64
       Id:
@@ -1001,14 +1013,18 @@ definitions:
     properties:
       Activo:
         type: boolean
-      AreaConocimiento:
+      AreaConocimientoId:
         $ref: '#/definitions/models.AreaConocimiento'
       CodigoAbreviacion:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
       FechaModificacion:
         type: string
+        format: datetime
       Id:
         type: integer
         format: int64
@@ -1027,8 +1043,12 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
       FechaModificacion:
         type: string
+        format: datetime
       Id:
         type: integer
         format: int64
@@ -1037,7 +1057,7 @@ definitions:
       NumeroOrden:
         type: number
         format: double
-      TipoPeriodo:
+      TipoPeriodoId:
         $ref: '#/definitions/models.TipoPeriodo'
   models.TipoDatoAdicional:
     title: TipoDatoAdicional
@@ -1049,8 +1069,12 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
       FechaModificacion:
         type: string
+        format: datetime
       Id:
         type: integer
         format: int64
@@ -1069,8 +1093,12 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
       FechaModificacion:
         type: string
+        format: datetime
       Id:
         type: integer
         format: int64
@@ -1089,8 +1117,12 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
       FechaModificacion:
         type: string
+        format: datetime
       Id:
         type: integer
         format: int64

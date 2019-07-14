@@ -17,8 +17,9 @@ type Periodo struct {
 	CodigoAbreviacion string       `orm:"column(codigo_abreviacion);null"`
 	Activo            bool         `orm:"column(activo)"`
 	NumeroOrden       float64      `orm:"column(numero_orden);null"`
-	FechaModificacion string       `orm:"column(fecha_modificacion);null"`
-	TipoPeriodo       *TipoPeriodo `orm:"column(tipo_periodo);rel(fk)"`
+	TipoPeriodoId     *TipoPeriodo `orm:"column(tipo_periodo_id);rel(fk)"`
+	FechaCreacion     time.Time    `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
+	FechaModificacion time.Time    `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 }
 
 func (t *Periodo) TableName() string {
@@ -32,9 +33,6 @@ func init() {
 // AddPeriodo insert a new Periodo into database and returns
 // last inserted Id on success.
 func AddPeriodo(m *Periodo) (id int64, err error) {
-	var t time.Time
-	t = time.Now()
-	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -134,9 +132,6 @@ func GetAllPeriodo(query map[string]string, fields []string, sortby []string, or
 func UpdatePeriodoById(m *Periodo) (err error) {
 	o := orm.NewOrm()
 	v := Periodo{Id: m.Id}
-	var t time.Time
-	t = time.Now()
-	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64

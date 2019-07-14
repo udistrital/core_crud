@@ -1414,8 +1414,13 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
                 "FechaModificacion": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "datetime"
                 },
                 "Id": {
                     "type": "integer",
@@ -1443,8 +1448,13 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
                 "FechaModificacion": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "datetime"
                 },
                 "Id": {
                     "type": "integer",
@@ -1472,10 +1482,15 @@
                 "Descripcion": {
                     "type": "string"
                 },
-                "FechaModificacion": {
-                    "type": "string"
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
                 },
-                "GrupoInvestigacion": {
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "GrupoInvestigacionId": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -1499,7 +1514,7 @@
                 "Activo": {
                     "type": "boolean"
                 },
-                "AreaConocimiento": {
+                "AreaConocimientoId": {
                     "$ref": "#/definitions/models.AreaConocimiento"
                 },
                 "CodigoAbreviacion": {
@@ -1508,8 +1523,13 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
                 "FechaModificacion": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "datetime"
                 },
                 "Id": {
                     "type": "integer",
@@ -1537,8 +1557,13 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
                 "FechaModificacion": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "datetime"
                 },
                 "Id": {
                     "type": "integer",
@@ -1551,7 +1576,7 @@
                     "type": "number",
                     "format": "double"
                 },
-                "TipoPeriodo": {
+                "TipoPeriodoId": {
                     "$ref": "#/definitions/models.TipoPeriodo"
                 }
             }
@@ -1569,8 +1594,13 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
                 "FechaModificacion": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "datetime"
                 },
                 "Id": {
                     "type": "integer",
@@ -1598,8 +1628,13 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
                 "FechaModificacion": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "datetime"
                 },
                 "Id": {
                     "type": "integer",
@@ -1627,8 +1662,13 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
                 "FechaModificacion": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "datetime"
                 },
                 "Id": {
                     "type": "integer",
