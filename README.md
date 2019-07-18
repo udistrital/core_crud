@@ -25,3 +25,5 @@ Ejemplo: CORE_CRUD_HTTP_PORT=8088 CORE_CRUD__PGUSER=postgres CORE_CRUD__PGPASS=1
 ## MODELO DE DATOS
 
 Como modelos de datos del Api se utilizo el siguiente 
+
+![image](https://github.com/udistrital/core_crud/blob/concepto_academico/core.png)
