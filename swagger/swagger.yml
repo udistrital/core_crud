@@ -478,7 +478,7 @@ definitions:
     properties:
       Activo:
         type: boolean
-      Año:
+      Ano:
         type: string
       CodigoAbreviacion:
         type: string

@@ -716,7 +716,7 @@
                 "Activo": {
                     "type": "boolean"
                 },
-                "Año": {
+                "Ano": {
                     "type": "string"
                 },
                 "CodigoAbreviacion": {
