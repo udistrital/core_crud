@@ -10,7 +10,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type LineaInvestigacion struct {
+type ConceptoAcademico struct {
 	Id                int       `orm:"column(id);pk;auto"`
 	Nombre            string    `orm:"column(nombre)"`
 	Descripcion       string    `orm:"column(descripcion);null"`
@@ -21,39 +21,39 @@ type LineaInvestigacion struct {
 	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 }
 
-func (t *LineaInvestigacion) TableName() string {
-	return "linea_investigacion"
+func (t *ConceptoAcademico) TableName() string {
+	return "concepto_academico"
 }
 
 func init() {
-	orm.RegisterModel(new(LineaInvestigacion))
+	orm.RegisterModel(new(ConceptoAcademico))
 }
 
-// AddLineaInvestigacion insert a new LineaInvestigacion into database and returns
+// AddConceptoAcademico insert a new ConceptoAcademico into database and returns
 // last inserted Id on success.
-func AddLineaInvestigacion(m *LineaInvestigacion) (id int64, err error) {
+func AddConceptoAcademico(m *ConceptoAcademico) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetLineaInvestigacionById retrieves LineaInvestigacion by Id. Returns error if
+// GetConceptoAcademicoById retrieves ConceptoAcademico by Id. Returns error if
 // Id doesn't exist
-func GetLineaInvestigacionById(id int) (v *LineaInvestigacion, err error) {
+func GetConceptoAcademicoById(id int) (v *ConceptoAcademico, err error) {
 	o := orm.NewOrm()
-	v = &LineaInvestigacion{Id: id}
+	v = &ConceptoAcademico{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllLineaInvestigacion retrieves all LineaInvestigacion matches certain condition. Returns empty list if
+// GetAllConceptoAcademico retrieves all ConceptoAcademico matches certain condition. Returns empty list if
 // no records exist
-func GetAllLineaInvestigacion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllConceptoAcademico(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(LineaInvestigacion)).RelatedSel()
+	qs := o.QueryTable(new(ConceptoAcademico)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -103,7 +103,7 @@ func GetAllLineaInvestigacion(query map[string]string, fields []string, sortby [
 		}
 	}
 
-	var l []LineaInvestigacion
+	var l []ConceptoAcademico
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -126,11 +126,11 @@ func GetAllLineaInvestigacion(query map[string]string, fields []string, sortby [
 	return nil, err
 }
 
-// UpdateLineaInvestigacion updates LineaInvestigacion by Id and returns error if
+// UpdateConceptoAcademico updates ConceptoAcademico by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateLineaInvestigacionById(m *LineaInvestigacion) (err error) {
+func UpdateConceptoAcademicoById(m *ConceptoAcademico) (err error) {
 	o := orm.NewOrm()
-	v := LineaInvestigacion{Id: m.Id}
+	v := ConceptoAcademico{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -141,15 +141,15 @@ func UpdateLineaInvestigacionById(m *LineaInvestigacion) (err error) {
 	return
 }
 
-// DeleteLineaInvestigacion deletes LineaInvestigacion by Id and returns error if
+// DeleteConceptoAcademico deletes ConceptoAcademico by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteLineaInvestigacion(id int) (err error) {
+func DeleteConceptoAcademico(id int) (err error) {
 	o := orm.NewOrm()
-	v := LineaInvestigacion{Id: id}
+	v := ConceptoAcademico{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&LineaInvestigacion{Id: id}); err == nil {
+		if num, err = o.Delete(&ConceptoAcademico{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

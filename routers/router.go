@@ -34,6 +34,12 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/concepto_academico",
+			beego.NSInclude(
+				&controllers.ConceptoAcademicoController{},
+			),
+		),
+
 		beego.NSNamespace("/nucleo_basico_conocimiento",
 			beego.NSInclude(
 				&controllers.NucleoBasicoConocimientoController{},
@@ -61,6 +67,12 @@ func init() {
 		beego.NSNamespace("/linea_investigacion",
 			beego.NSInclude(
 				&controllers.LineaInvestigacionController{},
+			),
+		),
+
+		beego.NSNamespace("/linea_investigacion_grupo_investigacion",
+			beego.NSInclude(
+				&controllers.LineaInvestigacionGrupoInvestigacionController{},
 			),
 		),
 	)

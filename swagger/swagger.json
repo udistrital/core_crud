@@ -188,6 +188,179 @@
                 }
             }
         },
+        "/concepto_academico/": {
+            "get": {
+                "tags": [
+                    "concepto_academico"
+                ],
+                "description": "get ConceptoAcademico",
+                "operationId": "ConceptoAcademicoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ConceptoAcademico"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "concepto_academico"
+                ],
+                "description": "create ConceptoAcademico",
+                "operationId": "ConceptoAcademicoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ConceptoAcademico content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ConceptoAcademico"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.ConceptoAcademico"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/concepto_academico/{id}": {
+            "get": {
+                "tags": [
+                    "concepto_academico"
+                ],
+                "description": "get ConceptoAcademico by id",
+                "operationId": "ConceptoAcademicoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ConceptoAcademico"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "concepto_academico"
+                ],
+                "description": "update the ConceptoAcademico",
+                "operationId": "ConceptoAcademicoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ConceptoAcademico content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ConceptoAcademico"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ConceptoAcademico"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "concepto_academico"
+                ],
+                "description": "delete the ConceptoAcademico",
+                "operationId": "ConceptoAcademicoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
         "/grupo_investigacion/": {
             "get": {
                 "tags": [
@@ -515,6 +688,179 @@
                 ],
                 "description": "delete the LineaInvestigacion",
                 "operationId": "LineaInvestigacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/linea_investigacion_grupo_investigacion/": {
+            "get": {
+                "tags": [
+                    "linea_investigacion_grupo_investigacion"
+                ],
+                "description": "get LineaInvestigacionGrupoInvestigacion",
+                "operationId": "LineaInvestigacionGrupoInvestigacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacionGrupoInvestigacion"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "linea_investigacion_grupo_investigacion"
+                ],
+                "description": "create LineaInvestigacionGrupoInvestigacion",
+                "operationId": "LineaInvestigacionGrupoInvestigacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for LineaInvestigacionGrupoInvestigacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacionGrupoInvestigacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.LineaInvestigacionGrupoInvestigacion"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/linea_investigacion_grupo_investigacion/{id}": {
+            "get": {
+                "tags": [
+                    "linea_investigacion_grupo_investigacion"
+                ],
+                "description": "get LineaInvestigacionGrupoInvestigacion by id",
+                "operationId": "LineaInvestigacionGrupoInvestigacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacionGrupoInvestigacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "linea_investigacion_grupo_investigacion"
+                ],
+                "description": "update the LineaInvestigacionGrupoInvestigacion",
+                "operationId": "LineaInvestigacionGrupoInvestigacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for LineaInvestigacionGrupoInvestigacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacionGrupoInvestigacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacionGrupoInvestigacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "linea_investigacion_grupo_investigacion"
+                ],
+                "description": "delete the LineaInvestigacionGrupoInvestigacion",
+                "operationId": "LineaInvestigacionGrupoInvestigacionController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -1435,6 +1781,40 @@
                 }
             }
         },
+        "models.ConceptoAcademico": {
+            "title": "ConceptoAcademico",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
         "models.GrupoInvestigacion": {
             "title": "GrupoInvestigacion",
             "type": "object",
@@ -1490,10 +1870,6 @@
                     "type": "string",
                     "format": "datetime"
                 },
-                "GrupoInvestigacionId": {
-                    "type": "integer",
-                    "format": "int64"
-                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -1504,6 +1880,35 @@
                 "NumeroOrden": {
                     "type": "number",
                     "format": "double"
+                }
+            }
+        },
+        "models.LineaInvestigacionGrupoInvestigacion": {
+            "title": "LineaInvestigacionGrupoInvestigacion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "GrupoInvestigacionId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "LineaInvestigacionId": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -1698,6 +2103,10 @@
             "description": "oprations for AreaConocimiento\n"
         },
         {
+            "name": "concepto_academico",
+            "description": "ConceptoAcademicoController operations for ConceptoAcademico\n"
+        },
+        {
             "name": "nucleo_basico_conocimiento",
             "description": "oprations for NucleoBasicoConocimiento\n"
         },
@@ -1716,6 +2125,10 @@
         {
             "name": "linea_investigacion",
             "description": "LineaInvestigacionController operations for LineaInvestigacion\n"
+        },
+        {
+            "name": "linea_investigacion_grupo_investigacion",
+            "description": "LineaInvestigacionGrupoInvestigacionController operations for LineaInvestigacion\n"
         }
     ]
 }

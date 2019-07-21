@@ -10,50 +10,48 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type LineaInvestigacion struct {
-	Id                int       `orm:"column(id);pk;auto"`
-	Nombre            string    `orm:"column(nombre)"`
-	Descripcion       string    `orm:"column(descripcion);null"`
-	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
-	Activo            bool      `orm:"column(activo)"`
-	NumeroOrden       float64   `orm:"column(numero_orden);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
+type LineaInvestigacionGrupoInvestigacion struct {
+	Id                   int       `orm:"column(id);pk;auto"`
+	GrupoInvestigacionId int       `orm:"column(grupo_investigacion_id)"`
+	LineaInvestigacionId int       `orm:"column(linea_investigacion_id)"`
+	Activo               bool      `orm:"column(activo)"`
+	FechaCreacion        time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
+	FechaModificacion    time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 }
 
-func (t *LineaInvestigacion) TableName() string {
-	return "linea_investigacion"
+func (t *LineaInvestigacionGrupoInvestigacion) TableName() string {
+	return "linea_investigacion_grupo_investigacion"
 }
 
 func init() {
-	orm.RegisterModel(new(LineaInvestigacion))
+	orm.RegisterModel(new(LineaInvestigacionGrupoInvestigacion))
 }
 
-// AddLineaInvestigacion insert a new LineaInvestigacion into database and returns
+// AddLineaInvestigacionGrupoInvestigacion insert a new LineaInvestigacionGrupoInvestigacion into database and returns
 // last inserted Id on success.
-func AddLineaInvestigacion(m *LineaInvestigacion) (id int64, err error) {
+func AddLineaInvestigacionGrupoInvestigacion(m *LineaInvestigacionGrupoInvestigacion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetLineaInvestigacionById retrieves LineaInvestigacion by Id. Returns error if
+// GetLineaInvestigacionGrupoInvestigacioById retrieves LineaInvestigacionGrupoInvestigacio by Id. Returns error if
 // Id doesn't exist
-func GetLineaInvestigacionById(id int) (v *LineaInvestigacion, err error) {
+func GetLineaInvestigacionGrupoInvestigacionById(id int) (v *LineaInvestigacionGrupoInvestigacion, err error) {
 	o := orm.NewOrm()
-	v = &LineaInvestigacion{Id: id}
+	v = &LineaInvestigacionGrupoInvestigacion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllLineaInvestigacion retrieves all LineaInvestigacion matches certain condition. Returns empty list if
+// GetAllLineaInvestigacionGrupoInvestigacion retrieves all LineaInvestigacionGrupoInvestigacion matches certain condition. Returns empty list if
 // no records exist
-func GetAllLineaInvestigacion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllLineaInvestigacionGrupoInvestigacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(LineaInvestigacion)).RelatedSel()
+	qs := o.QueryTable(new(LineaInvestigacionGrupoInvestigacion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -103,7 +101,7 @@ func GetAllLineaInvestigacion(query map[string]string, fields []string, sortby [
 		}
 	}
 
-	var l []LineaInvestigacion
+	var l []LineaInvestigacionGrupoInvestigacion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -126,11 +124,11 @@ func GetAllLineaInvestigacion(query map[string]string, fields []string, sortby [
 	return nil, err
 }
 
-// UpdateLineaInvestigacion updates LineaInvestigacion by Id and returns error if
+// UpdateLineaInvestigacionGrupoInvestigacion updates LineaInvestigacionGrupoInvestigacion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateLineaInvestigacionById(m *LineaInvestigacion) (err error) {
+func UpdateLineaInvestigacionGrupoInvestigacionById(m *LineaInvestigacionGrupoInvestigacion) (err error) {
 	o := orm.NewOrm()
-	v := LineaInvestigacion{Id: m.Id}
+	v := LineaInvestigacionGrupoInvestigacion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -141,15 +139,15 @@ func UpdateLineaInvestigacionById(m *LineaInvestigacion) (err error) {
 	return
 }
 
-// DeleteLineaInvestigacion deletes LineaInvestigacion by Id and returns error if
+// DeleteLineaInvestigacionGrupoInvestigacion deletes LineaInvestigacionGrupoInvestigacion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteLineaInvestigacion(id int) (err error) {
+func DeleteLineaInvestigacionGrupoInvestigacion(id int) (err error) {
 	o := orm.NewOrm()
-	v := LineaInvestigacion{Id: id}
+	v := LineaInvestigacionGrupoInvestigacion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&LineaInvestigacion{Id: id}); err == nil {
+		if num, err = o.Delete(&LineaInvestigacionGrupoInvestigacion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
