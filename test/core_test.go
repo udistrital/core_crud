@@ -26,6 +26,9 @@ import (
 // @resStatus codigo de respuesta a las solicitudes a la api
 var resStatus string
 
+// @resBody JSON repuesta Delete
+var resDelete string
+
 //@resBody JSON de respuesta a las solicitudesde la api
 var resBody []byte
 
@@ -198,14 +201,15 @@ func iSendRequestToWhereBodyIsJson(method, endpoint, bodyreq string) error {
 	}
 	if method == "GETID" {
 		method = "GET"
-		str := strconv.FormatFloat(Id, 'f', 5, 64)
+		str := strconv.FormatFloat(Id, 'f', 0, 64)
 		url = "http://localhost:8080" + endpoint + "/" + str
 
 	}
 	if method == "DELETE" {
 		str := strconv.FormatFloat(Id, 'f', 0, 64)
-		fmt.Println(str)
 		url = "http://localhost:8080" + endpoint + "/" + str
+		resDelete = "{\"Id\":" + str + "}"
+		ioutil.WriteFile("./files/res0/Ino.json", []byte(resDelete), 0644)
 
 	}
 
