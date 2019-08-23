@@ -202,6 +202,12 @@ func iSendRequestToWhereBodyIsJson(method, endpoint, bodyreq string) error {
 		url = "http://localhost:8080" + endpoint + "/" + str
 
 	}
+	if method == "DELETE" {
+		str := strconv.FormatFloat(Id, 'f', 0, 64)
+		fmt.Println(str)
+		url = "http://localhost:8080" + endpoint + "/" + str
+
+	}
 
 	pages := getPages(bodyreq)
 
