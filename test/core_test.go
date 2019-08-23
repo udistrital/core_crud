@@ -33,7 +33,7 @@ var savepostres map[string]interface{}
 
 var Id float64
 
-//@Parametrica estructura de las tablas parametricas
+//@estructura de las tablas parametricas
 type Parametrica struct {
 	Nombre            string
 	Descripcion       string
@@ -87,7 +87,8 @@ func gen_files() {
 		CodigoAbreviacion: "string",
 		Activo:            true,
 		NumeroOrden:       0,
-		//FechaCreacion:     2019-07-20T17:39:26.354486-05:00,
+		FechaCreacion:     t,
+		FechaModificacion: t,
 	}
 	rankingsJson, _ := json.Marshal(atributo)
 	ioutil.WriteFile("./files/req/Yt1.json", rankingsJson, 0644)
@@ -222,7 +223,7 @@ func iSendRequestToWhereBodyIsJson(method, endpoint, bodyreq string) error {
 	if method == "POST" && resStatus == "201 Created" {
 		ioutil.WriteFile("./files/req/Yt2.json", resBody, 0644)
 		json.Unmarshal([]byte(bodyr), &savepostres)
-		Id = savepostres["Body"].(map[string]interface{})["Id"].(float64)
+		Id = savepostres["Id"].(float64)
 
 	}
 	return nil
