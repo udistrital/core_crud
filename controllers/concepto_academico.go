@@ -2,14 +2,11 @@ package controllers
 
 import (
 	"encoding/json"
-	"errors"
 	"strconv"
 	"strings"
 
-	"github.com/planesticud/core_crud/models"
-
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/logs"
+	"github.com/planesticud/core_crud/models"
 )
 
 // ConceptoAcademicoController operations for ConceptoAcademico
@@ -40,14 +37,14 @@ func (c *ConceptoAcademicoController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			logs.Error(err)
-			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			beego.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "400", "Body": err.Error(), "Type": "error"}
 			c.Data["system"] = err
 			c.Abort("400")
 		}
 	} else {
-		logs.Error(err)
-		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		beego.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "400", "Body": err.Error(), "Type": "error"}
 		c.Data["system"] = err
 		c.Abort("400")
 	}
@@ -66,10 +63,10 @@ func (c *ConceptoAcademicoController) GetOne() {
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetConceptoAcademicoById(id)
 	if err != nil {
-		logs.Error(err)
-		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		beego.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "400", "Body": err.Error(), "Type": "error"}
 		c.Data["system"] = err
-		c.Abort("404")
+		c.Abort("400")
 	} else {
 		c.Data["json"] = v
 	}
@@ -121,7 +118,7 @@ func (c *ConceptoAcademicoController) GetAll() {
 		for _, cond := range strings.Split(v, ",") {
 			kv := strings.SplitN(cond, ":", 2)
 			if len(kv) != 2 {
-				c.Data["json"] = errors.New("Error: invalid query key/value pair")
+				c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: "Error: invalid query key/value pair"}
 				c.ServeJSON()
 				return
 			}
@@ -132,8 +129,8 @@ func (c *ConceptoAcademicoController) GetAll() {
 
 	l, err := models.GetAllConceptoAcademico(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		logs.Error(err)
-		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		beego.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "404", "Body": err.Error(), "Type": "error"}
 		c.Data["system"] = err
 		c.Abort("404")
 	} else {
@@ -159,17 +156,18 @@ func (c *ConceptoAcademicoController) Put() {
 	v := models.ConceptoAcademico{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateConceptoAcademicoById(&v); err == nil {
+			c.Ctx.Output.SetStatus(200)
 			c.Data["json"] = v
 		} else {
-			logs.Error(err)
-			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-			c.Data["system"] = err
+			beego.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "400", "Body": err.Error(), "Type": "error"}
+			c.Data["System"] = err
 			c.Abort("400")
 		}
 	} else {
-		logs.Error(err)
-		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-		c.Data["system"] = err
+		beego.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "400", "Body": err.Error(), "Type": "error"}
+		c.Data["System"] = err
 		c.Abort("400")
 	}
 	c.ServeJSON()
@@ -188,9 +186,9 @@ func (c *ConceptoAcademicoController) Delete() {
 	if err := models.DeleteConceptoAcademico(id); err == nil {
 		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		logs.Error(err)
-		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-		c.Data["system"] = err
+		beego.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "404", "Body": err.Error(), "Type": "error"}
+		c.Data["System"] = err
 		c.Abort("404")
 	}
 	c.ServeJSON()

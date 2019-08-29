@@ -30,4 +30,4 @@ Definir los valores de las siguientes variables de entorno:
 CORE_CRUD_HTTP_PORT=8102 CORE_CRUD__PGUSER=user CORE_CRUD__PGPASS=password CORE_CRUD__PGURLS=localhost CORE_CRUD__PGDB=bd CORE_CRUD__SCHEMA=schema_new bee run
 
 ## Modelo BD
-![core](https://user-images.githubusercontent.com/14035745/61594707-73fe0100-abb4-11e9-8767-4e30fec6a7c4.png)
+![image](https://github.com/planesticud/core_crud/blob/develop/modelo_core_crud.png).

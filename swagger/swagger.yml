@@ -48,8 +48,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.AreaConocimiento'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - area_conocimiento
@@ -65,8 +65,8 @@ paths:
       responses:
         "201":
           description: '{int} models.AreaConocimiento'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /area_conocimiento/{id}:
     get:
       tags:
@@ -84,8 +84,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.AreaConocimiento'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - area_conocimiento
@@ -108,8 +108,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.AreaConocimiento'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - area_conocimiento
@@ -124,8 +124,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /concepto_academico/:
     get:
       tags:
@@ -278,8 +278,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.GrupoInvestigacion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - grupo_investigacion
@@ -295,8 +295,8 @@ paths:
       responses:
         "201":
           description: '{int} models.GrupoInvestigacion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /grupo_investigacion/{id}:
     get:
       tags:
@@ -314,8 +314,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.GrupoInvestigacion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - grupo_investigacion
@@ -338,8 +338,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.GrupoInvestigacion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - grupo_investigacion
@@ -354,8 +354,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /linea_investigacion/:
     get:
       tags:
@@ -393,8 +393,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.LineaInvestigacion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - linea_investigacion
@@ -410,8 +410,8 @@ paths:
       responses:
         "201":
           description: '{int} models.LineaInvestigacion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /linea_investigacion/{id}:
     get:
       tags:
@@ -429,8 +429,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.LineaInvestigacion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - linea_investigacion
@@ -453,8 +453,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.LineaInvestigacion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - linea_investigacion
@@ -469,8 +469,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /linea_investigacion_grupo_investigacion/:
     get:
       tags:
@@ -508,8 +508,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.LineaInvestigacionGrupoInvestigacion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - linea_investigacion_grupo_investigacion
@@ -525,8 +525,8 @@ paths:
       responses:
         "201":
           description: '{int} models.LineaInvestigacionGrupoInvestigacion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /linea_investigacion_grupo_investigacion/{id}:
     get:
       tags:
@@ -544,8 +544,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.LineaInvestigacionGrupoInvestigacion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - linea_investigacion_grupo_investigacion
@@ -568,8 +568,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.LineaInvestigacionGrupoInvestigacion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - linea_investigacion_grupo_investigacion
@@ -584,8 +584,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /nucleo_basico_conocimiento/:
     get:
       tags:
@@ -623,8 +623,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NucleoBasicoConocimiento'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - nucleo_basico_conocimiento
@@ -640,8 +640,8 @@ paths:
       responses:
         "201":
           description: '{int} models.NucleoBasicoConocimiento'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /nucleo_basico_conocimiento/{id}:
     get:
       tags:
@@ -659,8 +659,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NucleoBasicoConocimiento'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - nucleo_basico_conocimiento
@@ -683,8 +683,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.NucleoBasicoConocimiento'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - nucleo_basico_conocimiento
@@ -699,8 +699,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /periodo/:
     get:
       tags:
@@ -853,8 +853,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoDatoAdicional'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - tipo_dato_adicional
@@ -870,8 +870,8 @@ paths:
       responses:
         "201":
           description: '{int} models.TipoDatoAdicional'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /tipo_dato_adicional/{id}:
     get:
       tags:
@@ -889,8 +889,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoDatoAdicional'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - tipo_dato_adicional
@@ -913,8 +913,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoDatoAdicional'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - tipo_dato_adicional
@@ -929,8 +929,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /tipo_periodo/:
     get:
       tags:
@@ -1083,8 +1083,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.UnidadTiempo'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - unidad_tiempo
@@ -1100,8 +1100,8 @@ paths:
       responses:
         "201":
           description: '{int} models.UnidadTiempo'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /unidad_tiempo/{id}:
     get:
       tags:
@@ -1119,8 +1119,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.UnidadTiempo'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - unidad_tiempo
@@ -1143,8 +1143,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.UnidadTiempo'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - unidad_tiempo
@@ -1159,8 +1159,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
 definitions:
   models.AreaConocimiento:
     title: AreaConocimiento
@@ -1174,10 +1174,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1198,10 +1196,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1222,10 +1218,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1246,10 +1240,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1266,10 +1258,8 @@ definitions:
         type: boolean
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       GrupoInvestigacionId:
         type: integer
         format: int64
@@ -1293,10 +1283,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1317,10 +1305,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1343,10 +1329,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1367,10 +1351,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1391,10 +1373,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
