@@ -1,0 +1,1 @@
+®)controllers/nucleo_basico_conocimiento.go 2goX¿hr)controllers/nucleo_basico_conocimiento.go
