@@ -7,16 +7,19 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type NucleoBasicoConocimiento struct {
-	Id                int               `orm:"column(id);pk;auto"`
-	Nombre            string            `orm:"column(nombre)"`
-	AreaConocimiento  *AreaConocimiento `orm:"column(area_conocimiento);rel(fk)"`
-	Descripcion       string            `orm:"column(descripcion);null"`
-	CodigoAbreviacion string            `orm:"column(codigo_abreviacion);null"`
-	Activo            bool              `orm:"column(activo)"`
-	NumeroOrden       float64           `orm:"column(numero_orden);null"`
+	Id                 int               `orm:"column(id);pk;auto"`
+	Nombre             string            `orm:"column(nombre)"`
+	AreaConocimientoId *AreaConocimiento `orm:"column(area_conocimiento_id);rel(fk)"`
+	Descripcion        string            `orm:"column(descripcion);null"`
+	CodigoAbreviacion  string            `orm:"column(codigo_abreviacion);null"`
+	Activo             bool              `orm:"column(activo)"`
+	NumeroOrden        float64           `orm:"column(numero_orden);null"`
+	FechaCreacion      string            `orm:"column(fecha_creacion);null"`
+	FechaModificacion  string            `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *NucleoBasicoConocimiento) TableName() string {
@@ -30,6 +33,8 @@ func init() {
 // AddNucleoBasicoConocimiento insert a new NucleoBasicoConocimiento into database and returns
 // last inserted Id on success.
 func AddNucleoBasicoConocimiento(m *NucleoBasicoConocimiento) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -125,10 +130,11 @@ func GetAllNucleoBasicoConocimiento(query map[string]string, fields []string, so
 func UpdateNucleoBasicoConocimientoById(m *NucleoBasicoConocimiento) (err error) {
 	o := orm.NewOrm()
 	v := NucleoBasicoConocimiento{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Update(m); err == nil {
+		if num, err = o.Update(m, "Nombre", "Descripcion", "CodigoAbreviacion", "AreaConocimientoId", "Activo", "NumeroOrden", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}

@@ -9,7 +9,8 @@
             "email": "astaxie@gmail.com"
         },
         "license": {
-            "name": "Url http://www.apache.org/licenses/LICENSE-2.0.html"
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
     "basePath": "/v1",
@@ -19,7 +20,7 @@
                 "tags": [
                     "area_conocimiento"
                 ],
-                "summary": "get AreaConocimiento",
+                "description": "get AreaConocimiento",
                 "operationId": "AreaConocimientoController.Get All",
                 "parameters": [
                     {
@@ -61,19 +62,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.AreaConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AreaConocimiento"
+                            "$ref": "#/definitions/models.AreaConocimiento"
                         }
                     },
-                    "403": {}
+                    "404": {
+                        "description": "not found resource"
+                    }
                 }
             },
             "post": {
                 "tags": [
                     "area_conocimiento"
                 ],
-                "summary": "create AreaConocimiento",
+                "description": "create AreaConocimiento",
                 "operationId": "AreaConocimientoController.Post",
                 "parameters": [
                     {
@@ -82,16 +85,16 @@
                         "description": "body for AreaConocimiento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/AreaConocimiento"
+                            "$ref": "#/definitions/models.AreaConocimiento"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "models.AreaConocimiento"
+                        "description": "{int} models.AreaConocimiento"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -101,7 +104,7 @@
                 "tags": [
                     "area_conocimiento"
                 ],
-                "summary": "get AreaConocimiento by id",
+                "description": "get AreaConocimiento by id",
                 "operationId": "AreaConocimientoController.Get",
                 "parameters": [
                     {
@@ -114,13 +117,13 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.AreaConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AreaConocimiento"
+                            "$ref": "#/definitions/models.AreaConocimiento"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -128,7 +131,7 @@
                 "tags": [
                     "area_conocimiento"
                 ],
-                "summary": "update the AreaConocimiento",
+                "description": "update the AreaConocimiento",
                 "operationId": "AreaConocimientoController.Update",
                 "parameters": [
                     {
@@ -144,19 +147,19 @@
                         "description": "body for AreaConocimiento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/AreaConocimiento"
+                            "$ref": "#/definitions/models.AreaConocimiento"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.AreaConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/AreaConocimiento"
+                            "$ref": "#/definitions/models.AreaConocimiento"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -164,7 +167,7 @@
                 "tags": [
                     "area_conocimiento"
                 ],
-                "summary": "delete the AreaConocimiento",
+                "description": "delete the AreaConocimiento",
                 "operationId": "AreaConocimientoController.Delete",
                 "parameters": [
                     {
@@ -177,10 +180,702 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "delete success!"
+                        "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/concepto_academico/": {
+            "get": {
+                "tags": [
+                    "concepto_academico"
+                ],
+                "description": "get ConceptoAcademico",
+                "operationId": "ConceptoAcademicoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ConceptoAcademico"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "concepto_academico"
+                ],
+                "description": "create ConceptoAcademico",
+                "operationId": "ConceptoAcademicoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ConceptoAcademico content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ConceptoAcademico"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.ConceptoAcademico"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/concepto_academico/{id}": {
+            "get": {
+                "tags": [
+                    "concepto_academico"
+                ],
+                "description": "get ConceptoAcademico by id",
+                "operationId": "ConceptoAcademicoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ConceptoAcademico"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "concepto_academico"
+                ],
+                "description": "update the ConceptoAcademico",
+                "operationId": "ConceptoAcademicoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ConceptoAcademico content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ConceptoAcademico"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ConceptoAcademico"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "concepto_academico"
+                ],
+                "description": "delete the ConceptoAcademico",
+                "operationId": "ConceptoAcademicoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/grupo_investigacion/": {
+            "get": {
+                "tags": [
+                    "grupo_investigacion"
+                ],
+                "description": "get GrupoInvestigacion",
+                "operationId": "GrupoInvestigacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.GrupoInvestigacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "grupo_investigacion"
+                ],
+                "description": "create GrupoInvestigacion",
+                "operationId": "GrupoInvestigacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for GrupoInvestigacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.GrupoInvestigacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.GrupoInvestigacion"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/grupo_investigacion/{id}": {
+            "get": {
+                "tags": [
+                    "grupo_investigacion"
+                ],
+                "description": "get GrupoInvestigacion by id",
+                "operationId": "GrupoInvestigacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.GrupoInvestigacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "grupo_investigacion"
+                ],
+                "description": "update the GrupoInvestigacion",
+                "operationId": "GrupoInvestigacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for GrupoInvestigacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.GrupoInvestigacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.GrupoInvestigacion"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "grupo_investigacion"
+                ],
+                "description": "delete the GrupoInvestigacion",
+                "operationId": "GrupoInvestigacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/linea_investigacion/": {
+            "get": {
+                "tags": [
+                    "linea_investigacion"
+                ],
+                "description": "get LineaInvestigacion",
+                "operationId": "LineaInvestigacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "linea_investigacion"
+                ],
+                "description": "create LineaInvestigacion",
+                "operationId": "LineaInvestigacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for LineaInvestigacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.LineaInvestigacion"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/linea_investigacion/{id}": {
+            "get": {
+                "tags": [
+                    "linea_investigacion"
+                ],
+                "description": "get LineaInvestigacion by id",
+                "operationId": "LineaInvestigacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "linea_investigacion"
+                ],
+                "description": "update the LineaInvestigacion",
+                "operationId": "LineaInvestigacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for LineaInvestigacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacion"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "linea_investigacion"
+                ],
+                "description": "delete the LineaInvestigacion",
+                "operationId": "LineaInvestigacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/linea_investigacion_grupo_investigacion/": {
+            "get": {
+                "tags": [
+                    "linea_investigacion_grupo_investigacion"
+                ],
+                "description": "get LineaInvestigacionGrupoInvestigacion",
+                "operationId": "LineaInvestigacionGrupoInvestigacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacionGrupoInvestigacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "linea_investigacion_grupo_investigacion"
+                ],
+                "description": "create LineaInvestigacionGrupoInvestigacion",
+                "operationId": "LineaInvestigacionGrupoInvestigacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for LineaInvestigacionGrupoInvestigacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacionGrupoInvestigacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.LineaInvestigacionGrupoInvestigacion"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/linea_investigacion_grupo_investigacion/{id}": {
+            "get": {
+                "tags": [
+                    "linea_investigacion_grupo_investigacion"
+                ],
+                "description": "get LineaInvestigacionGrupoInvestigacion by id",
+                "operationId": "LineaInvestigacionGrupoInvestigacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacionGrupoInvestigacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "linea_investigacion_grupo_investigacion"
+                ],
+                "description": "update the LineaInvestigacionGrupoInvestigacion",
+                "operationId": "LineaInvestigacionGrupoInvestigacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for LineaInvestigacionGrupoInvestigacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacionGrupoInvestigacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.LineaInvestigacionGrupoInvestigacion"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "linea_investigacion_grupo_investigacion"
+                ],
+                "description": "delete the LineaInvestigacionGrupoInvestigacion",
+                "operationId": "LineaInvestigacionGrupoInvestigacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -190,7 +885,7 @@
                 "tags": [
                     "nucleo_basico_conocimiento"
                 ],
-                "summary": "get NucleoBasicoConocimiento",
+                "description": "get NucleoBasicoConocimiento",
                 "operationId": "NucleoBasicoConocimientoController.Get All",
                 "parameters": [
                     {
@@ -232,19 +927,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.NucleoBasicoConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                            "$ref": "#/definitions/models.NucleoBasicoConocimiento"
                         }
                     },
-                    "403": {}
+                    "404": {
+                        "description": "not found resource"
+                    }
                 }
             },
             "post": {
                 "tags": [
                     "nucleo_basico_conocimiento"
                 ],
-                "summary": "create NucleoBasicoConocimiento",
+                "description": "create NucleoBasicoConocimiento",
                 "operationId": "NucleoBasicoConocimientoController.Post",
                 "parameters": [
                     {
@@ -253,16 +950,16 @@
                         "description": "body for NucleoBasicoConocimiento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                            "$ref": "#/definitions/models.NucleoBasicoConocimiento"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "models.NucleoBasicoConocimiento"
+                        "description": "{int} models.NucleoBasicoConocimiento"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -272,7 +969,7 @@
                 "tags": [
                     "nucleo_basico_conocimiento"
                 ],
-                "summary": "get NucleoBasicoConocimiento by id",
+                "description": "get NucleoBasicoConocimiento by id",
                 "operationId": "NucleoBasicoConocimientoController.Get",
                 "parameters": [
                     {
@@ -285,13 +982,13 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.NucleoBasicoConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                            "$ref": "#/definitions/models.NucleoBasicoConocimiento"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -299,7 +996,7 @@
                 "tags": [
                     "nucleo_basico_conocimiento"
                 ],
-                "summary": "update the NucleoBasicoConocimiento",
+                "description": "update the NucleoBasicoConocimiento",
                 "operationId": "NucleoBasicoConocimientoController.Update",
                 "parameters": [
                     {
@@ -315,19 +1012,19 @@
                         "description": "body for NucleoBasicoConocimiento content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                            "$ref": "#/definitions/models.NucleoBasicoConocimiento"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.NucleoBasicoConocimiento",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/NucleoBasicoConocimiento"
+                            "$ref": "#/definitions/models.NucleoBasicoConocimiento"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -335,7 +1032,7 @@
                 "tags": [
                     "nucleo_basico_conocimiento"
                 ],
-                "summary": "delete the NucleoBasicoConocimiento",
+                "description": "delete the NucleoBasicoConocimiento",
                 "operationId": "NucleoBasicoConocimientoController.Delete",
                 "parameters": [
                     {
@@ -348,10 +1045,183 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "delete success!"
+                        "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/periodo/": {
+            "get": {
+                "tags": [
+                    "periodo"
+                ],
+                "description": "get Periodo",
+                "operationId": "PeriodoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Periodo"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "periodo"
+                ],
+                "description": "create Periodo",
+                "operationId": "PeriodoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Periodo content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Periodo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Periodo"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/periodo/{id}": {
+            "get": {
+                "tags": [
+                    "periodo"
+                ],
+                "description": "get Periodo by id",
+                "operationId": "PeriodoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Periodo"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "periodo"
+                ],
+                "description": "update the Periodo",
+                "operationId": "PeriodoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Periodo content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Periodo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Periodo"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "periodo"
+                ],
+                "description": "delete the Periodo",
+                "operationId": "PeriodoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -361,7 +1231,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "summary": "get TipoDatoAdicional",
+                "description": "get TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Get All",
                 "parameters": [
                     {
@@ -403,19 +1273,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.TipoDatoAdicional",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/TipoDatoAdicional"
+                            "$ref": "#/definitions/models.TipoDatoAdicional"
                         }
                     },
-                    "403": {}
+                    "404": {
+                        "description": "not found resource"
+                    }
                 }
             },
             "post": {
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "summary": "create TipoDatoAdicional",
+                "description": "create TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Post",
                 "parameters": [
                     {
@@ -424,16 +1296,16 @@
                         "description": "body for TipoDatoAdicional content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/TipoDatoAdicional"
+                            "$ref": "#/definitions/models.TipoDatoAdicional"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "models.TipoDatoAdicional"
+                        "description": "{int} models.TipoDatoAdicional"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -443,7 +1315,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "summary": "get TipoDatoAdicional by id",
+                "description": "get TipoDatoAdicional by id",
                 "operationId": "TipoDatoAdicionalController.Get One",
                 "parameters": [
                     {
@@ -456,13 +1328,13 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.TipoDatoAdicional",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/TipoDatoAdicional"
+                            "$ref": "#/definitions/models.TipoDatoAdicional"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -470,7 +1342,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "summary": "update the TipoDatoAdicional",
+                "description": "update the TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Put",
                 "parameters": [
                     {
@@ -486,19 +1358,19 @@
                         "description": "body for TipoDatoAdicional content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/TipoDatoAdicional"
+                            "$ref": "#/definitions/models.TipoDatoAdicional"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.TipoDatoAdicional",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/TipoDatoAdicional"
+                            "$ref": "#/definitions/models.TipoDatoAdicional"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -506,7 +1378,7 @@
                 "tags": [
                     "tipo_dato_adicional"
                 ],
-                "summary": "delete the TipoDatoAdicional",
+                "description": "delete the TipoDatoAdicional",
                 "operationId": "TipoDatoAdicionalController.Delete",
                 "parameters": [
                     {
@@ -519,10 +1391,183 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "delete success!"
+                        "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/tipo_periodo/": {
+            "get": {
+                "tags": [
+                    "tipo_periodo"
+                ],
+                "description": "get TipoPeriodo",
+                "operationId": "TipoPeriodoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPeriodo"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tipo_periodo"
+                ],
+                "description": "create TipoPeriodo",
+                "operationId": "TipoPeriodoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoPeriodo content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPeriodo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TipoPeriodo"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tipo_periodo/{id}": {
+            "get": {
+                "tags": [
+                    "tipo_periodo"
+                ],
+                "description": "get TipoPeriodo by id",
+                "operationId": "TipoPeriodoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPeriodo"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "tipo_periodo"
+                ],
+                "description": "update the TipoPeriodo",
+                "operationId": "TipoPeriodoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoPeriodo content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPeriodo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPeriodo"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tipo_periodo"
+                ],
+                "description": "delete the TipoPeriodo",
+                "operationId": "TipoPeriodoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -532,7 +1577,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "summary": "get UnidadTiempo",
+                "description": "get UnidadTiempo",
                 "operationId": "UnidadTiempoController.Get All",
                 "parameters": [
                     {
@@ -574,19 +1619,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.UnidadTiempo",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/UnidadTiempo"
+                            "$ref": "#/definitions/models.UnidadTiempo"
                         }
                     },
-                    "403": {}
+                    "404": {
+                        "description": "not found resource"
+                    }
                 }
             },
             "post": {
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "summary": "create UnidadTiempo",
+                "description": "create UnidadTiempo",
                 "operationId": "UnidadTiempoController.Post",
                 "parameters": [
                     {
@@ -595,16 +1642,16 @@
                         "description": "body for UnidadTiempo content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/UnidadTiempo"
+                            "$ref": "#/definitions/models.UnidadTiempo"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "models.UnidadTiempo"
+                        "description": "{int} models.UnidadTiempo"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -614,7 +1661,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "summary": "get UnidadTiempo by id",
+                "description": "get UnidadTiempo by id",
                 "operationId": "UnidadTiempoController.Get One",
                 "parameters": [
                     {
@@ -627,13 +1674,13 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.UnidadTiempo",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/UnidadTiempo"
+                            "$ref": "#/definitions/models.UnidadTiempo"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -641,7 +1688,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "summary": "update the UnidadTiempo",
+                "description": "update the UnidadTiempo",
                 "operationId": "UnidadTiempoController.Put",
                 "parameters": [
                     {
@@ -657,19 +1704,19 @@
                         "description": "body for UnidadTiempo content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/UnidadTiempo"
+                            "$ref": "#/definitions/models.UnidadTiempo"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "models.UnidadTiempo",
+                        "description": "",
                         "schema": {
-                            "$ref": "#/definitions/UnidadTiempo"
+                            "$ref": "#/definitions/models.UnidadTiempo"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -677,7 +1724,7 @@
                 "tags": [
                     "unidad_tiempo"
                 ],
-                "summary": "delete the UnidadTiempo",
+                "description": "delete the UnidadTiempo",
                 "operationId": "UnidadTiempoController.Delete",
                 "parameters": [
                     {
@@ -690,17 +1737,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "delete success!"
+                        "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         }
     },
     "definitions": {
-        "AreaConocimiento": {
+        "models.AreaConocimiento": {
             "title": "AreaConocimiento",
             "type": "object",
             "properties": {
@@ -713,6 +1760,12 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -726,15 +1779,12 @@
                 }
             }
         },
-        "NucleoBasicoConocimiento": {
-            "title": "NucleoBasicoConocimiento",
+        "models.ConceptoAcademico": {
+            "title": "ConceptoAcademico",
             "type": "object",
             "properties": {
                 "Activo": {
                     "type": "boolean"
-                },
-                "AreaConocimiento": {
-                    "$ref": "#/definitions/AreaConocimiento"
                 },
                 "CodigoAbreviacion": {
                     "type": "string"
@@ -742,6 +1792,12 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -755,7 +1811,168 @@
                 }
             }
         },
-        "TipoDatoAdicional": {
+        "models.GrupoInvestigacion": {
+            "title": "GrupoInvestigacion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.LineaInvestigacion": {
+            "title": "LineaInvestigacion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.LineaInvestigacionGrupoInvestigacion": {
+            "title": "LineaInvestigacionGrupoInvestigacion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
+                "GrupoInvestigacionId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "LineaInvestigacionId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.NucleoBasicoConocimiento": {
+            "title": "NucleoBasicoConocimiento",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "AreaConocimientoId": {
+                    "$ref": "#/definitions/models.AreaConocimiento"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.Periodo": {
+            "title": "Periodo",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "TipoPeriodoId": {
+                    "$ref": "#/definitions/models.TipoPeriodo"
+                }
+            }
+        },
+        "models.TipoDatoAdicional": {
             "title": "TipoDatoAdicional",
             "type": "object",
             "properties": {
@@ -768,6 +1985,12 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -781,7 +2004,39 @@
                 }
             }
         },
-        "UnidadTiempo": {
+        "models.TipoPeriodo": {
+            "title": "TipoPeriodo",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.UnidadTiempo": {
             "title": "UnidadTiempo",
             "type": "object",
             "properties": {
@@ -792,6 +2047,12 @@
                     "type": "string"
                 },
                 "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
                     "type": "string"
                 },
                 "Id": {
@@ -822,8 +2083,32 @@
             "description": "oprations for AreaConocimiento\n"
         },
         {
+            "name": "concepto_academico",
+            "description": "ConceptoAcademicoController operations for ConceptoAcademico\n"
+        },
+        {
             "name": "nucleo_basico_conocimiento",
             "description": "oprations for NucleoBasicoConocimiento\n"
+        },
+        {
+            "name": "periodo",
+            "description": "PeriodoController operations for Periodo\n"
+        },
+        {
+            "name": "tipo_periodo",
+            "description": "TipoPeriodoController operations for TipoPeriodo\n"
+        },
+        {
+            "name": "grupo_investigacion",
+            "description": "GrupoInvestigacionController operations for GrupoInvestigacion\n"
+        },
+        {
+            "name": "linea_investigacion",
+            "description": "LineaInvestigacionController operations for LineaInvestigacion\n"
+        },
+        {
+            "name": "linea_investigacion_grupo_investigacion",
+            "description": "LineaInvestigacionGrupoInvestigacionController operations for LineaInvestigacion\n"
         }
     ]
 }
