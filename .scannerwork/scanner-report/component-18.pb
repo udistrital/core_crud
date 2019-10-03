@@ -1,1 +1,0 @@
-models/tipo_periodo.go 2goX¡hrmodels/tipo_periodo.go

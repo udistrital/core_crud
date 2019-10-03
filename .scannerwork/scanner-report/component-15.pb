@@ -1,1 +1,0 @@
-models/area_conocimiento.go 2goXùhrmodels/area_conocimiento.go

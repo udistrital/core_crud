@@ -1,1 +1,0 @@
-$models/nucleo_basico_conocimiento.go 2goXžhr$models/nucleo_basico_conocimiento.go
