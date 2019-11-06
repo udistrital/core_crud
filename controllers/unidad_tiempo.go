@@ -7,7 +7,7 @@ import (
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
-	"github.com/planesticud/core_crud/models"
+	"github.com/udistrital/core_crud/models"
 )
 
 // UnidadTiempoController operations for UnidadTiempo
