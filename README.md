@@ -1,18 +1,33 @@
 # core_crud
+API de información general - core
 
-## Descripción
-API REST basado en golang para el core de base de datos, el cual contiene las entidades básicas para el consumo de otras API's de la organización.
+Integración con
+
+ - `CI`
+ - `AWS Lambda - S3`
+ - `Drone 1.x`
+ - `core_crud master/develop`
+
+## Requerimientos
+Go version >= 1.8.
+
+## Preparación
+Para usar el API, usar el comando:
+
+ - `go get github.com/planesticud/core_crud`
 
 ## Ejecución
+Definir los valores de las siguientes variables de entorno:
 
-Primero debes clonar el repositorio on
+ - `CORE_CRUD_HTTP_PORT`: Puerto asignado para la ejecución del API
+ - `CORE_CRUD__PGUSER`: Usuario de la base de datos
+ - `CORE_CRUD__PGPASS`: Clave del usuario para la conexión a la base de datos  
+ - `CORE_CRUD__PGURLS`: Host de conexión
+ - `CORE_CRUD__PGDB`: Nombre de la base de datos
+ - `CORE_CRUD__SCHEMA`: Esquema a utilizar en la base de datos
 
-	go get github.com/udistrital/core_crud
+## Ejemplo
+CORE_CRUD_HTTP_PORT=8102 CORE_CRUD__PGUSER=user CORE_CRUD__PGPASS=password CORE_CRUD__PGURLS=localhost CORE_CRUD__PGDB=bd CORE_CRUD__SCHEMA=schema_new bee run
 
-luego debes ir a la raiz del proyecto en tu gopath
-
-	cd $GOPATH/src/github.com/udistrital/core_crud
-
-y ejecutas con go y las variables de entorno que deses aplicar
-
-	//definición variables de entorno, VARIABLE1=value1// go run main.go
+## Modelo BD
+![image](https://github.com/planesticud/core_crud/blob/develop/modelo_core_crud.png).
