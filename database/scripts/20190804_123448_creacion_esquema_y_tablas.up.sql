@@ -190,7 +190,7 @@ COMMENT ON COLUMN core.tipo_periodo.descripcion IS 'Descripcion del tipo de peri
 -- ddl-end --
 COMMENT ON COLUMN core.tipo_periodo.codigo_abreviacion IS 'Código de abreviación, sigla, acrónimo u otra representación corta del registro si se requiere';
 -- ddl-end --
-COMMENT ON COLUMN core.tipo_periodo.activo IS 'Booleano que define si el tipo de periodo se encuentra actualmente activo o no';udistrital/entradas_crud
+COMMENT ON COLUMN core.tipo_periodo.activo IS 'Booleano que define si el tipo de periodo se encuentra actualmente activo o no';
 -- ddl-end --
 COMMENT ON COLUMN core.tipo_periodo.numero_orden IS 'En dado caso que se necesite establecer un orden a los registros que no se encuentre definido por aplicación ni por BD. Allí se almacena permitiendo realizar subitems mediante la precisión.';
 -- ddl-end --
