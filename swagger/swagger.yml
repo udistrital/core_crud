@@ -1299,6 +1299,8 @@ definitions:
     properties:
       Activo:
         type: boolean
+      Ano:
+        type: string
       CodigoAbreviacion:
         type: string
       Descripcion:
@@ -1315,6 +1317,8 @@ definitions:
       NumeroOrden:
         type: number
         format: double
+      Periodo:
+        type: string
       TipoPeriodoId:
         $ref: '#/definitions/models.TipoPeriodo'
   models.TipoDatoAdicional:

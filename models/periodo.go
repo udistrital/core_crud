@@ -13,6 +13,8 @@ import (
 type Periodo struct {
 	Id                int          `orm:"column(id);pk;auto"`
 	Nombre            string       `orm:"column(nombre)"`
+	Ano               string       `orm:"column(ano);null"`
+	Periodo           string       `orm:"column(periodo);null"`
 	Descripcion       string       `orm:"column(descripcion);null"`
 	CodigoAbreviacion string       `orm:"column(codigo_abreviacion);null"`
 	Activo            bool         `orm:"column(activo)"`

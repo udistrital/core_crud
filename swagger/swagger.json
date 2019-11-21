@@ -1944,6 +1944,9 @@
                 "Activo": {
                     "type": "boolean"
                 },
+                "Ano": {
+                    "type": "string"
+                },
                 "CodigoAbreviacion": {
                     "type": "string"
                 },
@@ -1966,6 +1969,9 @@
                 "NumeroOrden": {
                     "type": "number",
                     "format": "double"
+                },
+                "Periodo": {
+                    "type": "string"
                 },
                 "TipoPeriodoId": {
                     "$ref": "#/definitions/models.TipoPeriodo"
