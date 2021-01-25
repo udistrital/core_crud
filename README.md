@@ -14,7 +14,7 @@ Go version >= 1.8.
 ## Preparación
 Para usar el API, usar el comando:
 
- - `go get github.com/planesticud/core_crud`
+ - `go get github.com/udistrital/core_crud`
 
 ## Ejecución
 Definir los valores de las siguientes variables de entorno:
@@ -30,4 +30,4 @@ Definir los valores de las siguientes variables de entorno:
 CORE_CRUD_HTTP_PORT=8102 CORE_CRUD__PGUSER=user CORE_CRUD__PGPASS=password CORE_CRUD__PGURLS=localhost CORE_CRUD__PGDB=bd CORE_CRUD__SCHEMA=schema_new bee run
 
 ## Modelo BD
-![image](https://github.com/planesticud/core_crud/blob/develop/modelo_core_crud.png).
+![image](https://github.com/udistrital/core_crud/blob/develop/modelo_core_crud.png).
