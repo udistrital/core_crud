@@ -11,6 +11,811 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 basePath: /v1
 paths:
+  /area_conocimiento/:
+    get:
+      tags:
+      - area_conocimiento
+      description: get AreaConocimiento
+      operationId: AreaConocimientoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.AreaConocimiento'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - area_conocimiento
+      description: create AreaConocimiento
+      operationId: AreaConocimientoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for AreaConocimiento content
+        required: true
+        schema:
+          $ref: '#/definitions/models.AreaConocimiento'
+      responses:
+        "201":
+          description: '{int} models.AreaConocimiento'
+        "400":
+          description: the request contains incorrect syntax
+  /area_conocimiento/{id}:
+    get:
+      tags:
+      - area_conocimiento
+      description: get AreaConocimiento by id
+      operationId: AreaConocimientoController.Get
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.AreaConocimiento'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - area_conocimiento
+      description: update the AreaConocimiento
+      operationId: AreaConocimientoController.Update
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for AreaConocimiento content
+        required: true
+        schema:
+          $ref: '#/definitions/models.AreaConocimiento'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.AreaConocimiento'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - area_conocimiento
+      description: delete the AreaConocimiento
+      operationId: AreaConocimientoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /concepto_academico/:
+    get:
+      tags:
+      - concepto_academico
+      description: get ConceptoAcademico
+      operationId: ConceptoAcademicoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ConceptoAcademico'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - concepto_academico
+      description: create ConceptoAcademico
+      operationId: ConceptoAcademicoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ConceptoAcademico content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ConceptoAcademico'
+      responses:
+        "201":
+          description: '{int} models.ConceptoAcademico'
+        "400":
+          description: the request contains incorrect syntax
+  /concepto_academico/{id}:
+    get:
+      tags:
+      - concepto_academico
+      description: get ConceptoAcademico by id
+      operationId: ConceptoAcademicoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ConceptoAcademico'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - concepto_academico
+      description: update the ConceptoAcademico
+      operationId: ConceptoAcademicoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ConceptoAcademico content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ConceptoAcademico'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ConceptoAcademico'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - concepto_academico
+      description: delete the ConceptoAcademico
+      operationId: ConceptoAcademicoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /grupo_investigacion/:
+    get:
+      tags:
+      - grupo_investigacion
+      description: get GrupoInvestigacion
+      operationId: GrupoInvestigacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.GrupoInvestigacion'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - grupo_investigacion
+      description: create GrupoInvestigacion
+      operationId: GrupoInvestigacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for GrupoInvestigacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.GrupoInvestigacion'
+      responses:
+        "201":
+          description: '{int} models.GrupoInvestigacion'
+        "400":
+          description: the request contains incorrect syntax
+  /grupo_investigacion/{id}:
+    get:
+      tags:
+      - grupo_investigacion
+      description: get GrupoInvestigacion by id
+      operationId: GrupoInvestigacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.GrupoInvestigacion'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - grupo_investigacion
+      description: update the GrupoInvestigacion
+      operationId: GrupoInvestigacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for GrupoInvestigacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.GrupoInvestigacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.GrupoInvestigacion'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - grupo_investigacion
+      description: delete the GrupoInvestigacion
+      operationId: GrupoInvestigacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /linea_investigacion/:
+    get:
+      tags:
+      - linea_investigacion
+      description: get LineaInvestigacion
+      operationId: LineaInvestigacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.LineaInvestigacion'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - linea_investigacion
+      description: create LineaInvestigacion
+      operationId: LineaInvestigacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for LineaInvestigacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.LineaInvestigacion'
+      responses:
+        "201":
+          description: '{int} models.LineaInvestigacion'
+        "400":
+          description: the request contains incorrect syntax
+  /linea_investigacion/{id}:
+    get:
+      tags:
+      - linea_investigacion
+      description: get LineaInvestigacion by id
+      operationId: LineaInvestigacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.LineaInvestigacion'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - linea_investigacion
+      description: update the LineaInvestigacion
+      operationId: LineaInvestigacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for LineaInvestigacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.LineaInvestigacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.LineaInvestigacion'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - linea_investigacion
+      description: delete the LineaInvestigacion
+      operationId: LineaInvestigacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /linea_investigacion_grupo_investigacion/:
+    get:
+      tags:
+      - linea_investigacion_grupo_investigacion
+      description: get LineaInvestigacionGrupoInvestigacion
+      operationId: LineaInvestigacionGrupoInvestigacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.LineaInvestigacionGrupoInvestigacion'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - linea_investigacion_grupo_investigacion
+      description: create LineaInvestigacionGrupoInvestigacion
+      operationId: LineaInvestigacionGrupoInvestigacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for LineaInvestigacionGrupoInvestigacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.LineaInvestigacionGrupoInvestigacion'
+      responses:
+        "201":
+          description: '{int} models.LineaInvestigacionGrupoInvestigacion'
+        "400":
+          description: the request contains incorrect syntax
+  /linea_investigacion_grupo_investigacion/{id}:
+    get:
+      tags:
+      - linea_investigacion_grupo_investigacion
+      description: get LineaInvestigacionGrupoInvestigacion by id
+      operationId: LineaInvestigacionGrupoInvestigacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.LineaInvestigacionGrupoInvestigacion'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - linea_investigacion_grupo_investigacion
+      description: update the LineaInvestigacionGrupoInvestigacion
+      operationId: LineaInvestigacionGrupoInvestigacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for LineaInvestigacionGrupoInvestigacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.LineaInvestigacionGrupoInvestigacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.LineaInvestigacionGrupoInvestigacion'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - linea_investigacion_grupo_investigacion
+      description: delete the LineaInvestigacionGrupoInvestigacion
+      operationId: LineaInvestigacionGrupoInvestigacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /nucleo_basico_conocimiento/:
+    get:
+      tags:
+      - nucleo_basico_conocimiento
+      description: get NucleoBasicoConocimiento
+      operationId: NucleoBasicoConocimientoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NucleoBasicoConocimiento'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - nucleo_basico_conocimiento
+      description: create NucleoBasicoConocimiento
+      operationId: NucleoBasicoConocimientoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for NucleoBasicoConocimiento content
+        required: true
+        schema:
+          $ref: '#/definitions/models.NucleoBasicoConocimiento'
+      responses:
+        "201":
+          description: '{int} models.NucleoBasicoConocimiento'
+        "400":
+          description: the request contains incorrect syntax
+  /nucleo_basico_conocimiento/{id}:
+    get:
+      tags:
+      - nucleo_basico_conocimiento
+      description: get NucleoBasicoConocimiento by id
+      operationId: NucleoBasicoConocimientoController.Get
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NucleoBasicoConocimiento'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - nucleo_basico_conocimiento
+      description: update the NucleoBasicoConocimiento
+      operationId: NucleoBasicoConocimientoController.Update
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for NucleoBasicoConocimiento content
+        required: true
+        schema:
+          $ref: '#/definitions/models.NucleoBasicoConocimiento'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NucleoBasicoConocimiento'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - nucleo_basico_conocimiento
+      description: delete the NucleoBasicoConocimiento
+      operationId: NucleoBasicoConocimientoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /periodo/:
+    get:
+      tags:
+      - periodo
+      description: get Periodo
+      operationId: PeriodoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Periodo'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - periodo
+      description: create Periodo
+      operationId: PeriodoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Periodo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Periodo'
+      responses:
+        "201":
+          description: '{int} models.Periodo'
+        "400":
+          description: the request contains incorrect syntax
+  /periodo/{id}:
+    get:
+      tags:
+      - periodo
+      description: get Periodo by id
+      operationId: PeriodoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Periodo'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - periodo
+      description: update the Periodo
+      operationId: PeriodoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Periodo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Periodo'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Periodo'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - periodo
+      description: delete the Periodo
+      operationId: PeriodoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
   /tipo_dato_adicional/:
     get:
       tags:
@@ -48,8 +853,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoDatoAdicional'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - tipo_dato_adicional
@@ -65,8 +870,8 @@ paths:
       responses:
         "201":
           description: '{int} models.TipoDatoAdicional'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /tipo_dato_adicional/{id}:
     get:
       tags:
@@ -84,8 +889,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoDatoAdicional'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - tipo_dato_adicional
@@ -108,8 +913,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoDatoAdicional'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - tipo_dato_adicional
@@ -124,8 +929,123 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
+  /tipo_periodo/:
+    get:
+      tags:
+      - tipo_periodo
+      description: get TipoPeriodo
+      operationId: TipoPeriodoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoPeriodo'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - tipo_periodo
+      description: create TipoPeriodo
+      operationId: TipoPeriodoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TipoPeriodo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoPeriodo'
+      responses:
+        "201":
+          description: '{int} models.TipoPeriodo'
+        "400":
+          description: the request contains incorrect syntax
+  /tipo_periodo/{id}:
+    get:
+      tags:
+      - tipo_periodo
+      description: get TipoPeriodo by id
+      operationId: TipoPeriodoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoPeriodo'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - tipo_periodo
+      description: update the TipoPeriodo
+      operationId: TipoPeriodoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TipoPeriodo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoPeriodo'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoPeriodo'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - tipo_periodo
+      description: delete the TipoPeriodo
+      operationId: TipoPeriodoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
   /unidad_tiempo/:
     get:
       tags:
@@ -163,8 +1083,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.UnidadTiempo'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - unidad_tiempo
@@ -180,8 +1100,8 @@ paths:
       responses:
         "201":
           description: '{int} models.UnidadTiempo'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /unidad_tiempo/{id}:
     get:
       tags:
@@ -199,8 +1119,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.UnidadTiempo'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - unidad_tiempo
@@ -223,8 +1143,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.UnidadTiempo'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - unidad_tiempo
@@ -239,9 +1159,168 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
 definitions:
+  models.AreaConocimiento:
+    title: AreaConocimiento
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.ConceptoAcademico:
+    title: ConceptoAcademico
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.GrupoInvestigacion:
+    title: GrupoInvestigacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.LineaInvestigacion:
+    title: LineaInvestigacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.LineaInvestigacionGrupoInvestigacion:
+    title: LineaInvestigacionGrupoInvestigacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      GrupoInvestigacionId:
+        type: integer
+        format: int64
+      Id:
+        type: integer
+        format: int64
+      LineaInvestigacionId:
+        type: integer
+        format: int64
+  models.NucleoBasicoConocimiento:
+    title: NucleoBasicoConocimiento
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      AreaConocimientoId:
+        $ref: '#/definitions/models.AreaConocimiento'
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.Periodo:
+    title: Periodo
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Ano:
+        type: string
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+      Periodo:
+        type: string
+      TipoPeriodoId:
+        $ref: '#/definitions/models.TipoPeriodo'
   models.TipoDatoAdicional:
     title: TipoDatoAdicional
     type: object
@@ -251,6 +1330,32 @@ definitions:
       CodigoAbreviacion:
         type: string
       Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.TipoPeriodo:
+    title: TipoPeriodo
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
         type: string
       Id:
         type: integer
@@ -270,6 +1375,10 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
       Id:
         type: integer
         format: int64
@@ -285,3 +1394,27 @@ tags:
 - name: tipo_dato_adicional
   description: |
     TipoDatoAdicionalController operations for TipoDatoAdicional
+- name: area_conocimiento
+  description: |
+    oprations for AreaConocimiento
+- name: concepto_academico
+  description: |
+    ConceptoAcademicoController operations for ConceptoAcademico
+- name: nucleo_basico_conocimiento
+  description: |
+    oprations for NucleoBasicoConocimiento
+- name: periodo
+  description: |
+    PeriodoController operations for Periodo
+- name: tipo_periodo
+  description: |
+    TipoPeriodoController operations for TipoPeriodo
+- name: grupo_investigacion
+  description: |
+    GrupoInvestigacionController operations for GrupoInvestigacion
+- name: linea_investigacion
+  description: |
+    LineaInvestigacionController operations for LineaInvestigacion
+- name: linea_investigacion_grupo_investigacion
+  description: |
+    LineaInvestigacionGrupoInvestigacionController operations for LineaInvestigacion

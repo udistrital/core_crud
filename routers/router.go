@@ -27,6 +27,54 @@ func init() {
 				&controllers.TipoDatoAdicionalController{},
 			),
 		),
+
+		beego.NSNamespace("/area_conocimiento",
+			beego.NSInclude(
+				&controllers.AreaConocimientoController{},
+			),
+		),
+
+		beego.NSNamespace("/concepto_academico",
+			beego.NSInclude(
+				&controllers.ConceptoAcademicoController{},
+			),
+		),
+
+		beego.NSNamespace("/nucleo_basico_conocimiento",
+			beego.NSInclude(
+				&controllers.NucleoBasicoConocimientoController{},
+			),
+		),
+
+		beego.NSNamespace("/periodo",
+			beego.NSInclude(
+				&controllers.PeriodoController{},
+			),
+		),
+
+		beego.NSNamespace("/tipo_periodo",
+			beego.NSInclude(
+				&controllers.TipoPeriodoController{},
+			),
+		),
+
+		beego.NSNamespace("/grupo_investigacion",
+			beego.NSInclude(
+				&controllers.GrupoInvestigacionController{},
+			),
+		),
+
+		beego.NSNamespace("/linea_investigacion",
+			beego.NSInclude(
+				&controllers.LineaInvestigacionController{},
+			),
+		),
+
+		beego.NSNamespace("/linea_investigacion_grupo_investigacion",
+			beego.NSInclude(
+				&controllers.LineaInvestigacionGrupoInvestigacionController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
